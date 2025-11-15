@@ -1,0 +1,55 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+# If using Django migrations but want to keep migrations, remove this line:
+# */migrations/*.py
+# Keep init files
+*/migrations/__pycache__/
+
+# Environment variables
+.env
+*.env
+
+# Virtual Environments
+venv/
+env/
+.venv/
+.virtualenv/
+ENV/
+env.bak/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Python tooling
+pip-wheel-metadata/
+.pytest_cache/
+.cache/
+coverage.xml
+htmlcov/
+
+# SQLite backups
+*.sqlite3-journal
+
+# System files
+.DS_Store
+Thumbs.db
