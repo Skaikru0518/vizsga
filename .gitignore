@@ -15,6 +15,9 @@ staticfiles/
 # Environment variables
 .env
 *.env
+.claude
+.docs
+backend2
 
 # Virtual Environments
 venv/
