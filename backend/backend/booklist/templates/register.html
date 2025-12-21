@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{% url 'booklist:register' %}" method="post">
+{% csrf_token %}
+{{registerform.as_p}}
+<input type="submit" value="Register">
+</form>
+{% endblock content %}
