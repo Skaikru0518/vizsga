@@ -68,7 +68,7 @@ def bookList(request):
     if request.method == "POST":
         serialized = BookSerializer(data = request.data)
         if serialized.is_valid():
-            serialized.save()
+            serialized.save(user=request.user)
             return Response(serialized.data, status.HTTP_201_CREATED)
         return Response(serialized.errors, status.HTTP_400_BAD_REQUEST)
     

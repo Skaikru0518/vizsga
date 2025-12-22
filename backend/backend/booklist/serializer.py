@@ -5,4 +5,5 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = "__all__"
+        read_only_fields = ['user']
         depth = 1
