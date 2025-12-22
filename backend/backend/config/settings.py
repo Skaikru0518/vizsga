@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'booklist',
     'rest_framework',
     'corsheaders',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,13 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "booklist", "media")
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Book List API',
+    'DESCRIPTION': 'API for managing books',
+    'VERSION': '1.0.0',
+}

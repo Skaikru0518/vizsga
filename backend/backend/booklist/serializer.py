@@ -6,4 +6,3 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = "__all__"
         read_only_fields = ['user']
-        depth = 1

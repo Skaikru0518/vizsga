@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from drf_spectacular.utils import extend_schema
 
 from .models import Book
 from .serializer import BookSerializer
@@ -59,6 +60,11 @@ def registerUser(request):
             newUser.save()
             return redirect("/")
 
+@extend_schema(
+    request=BookSerializer,
+    responses={200: BookSerializer(many=True)},
+    description="Get all books or create a new book"
+)
 @api_view(["GET","POST"])
 def bookList(request):
     if request.method == "GET":
@@ -72,9 +78,13 @@ def bookList(request):
             return Response(serialized.data, status.HTTP_201_CREATED)
         return Response(serialized.errors, status.HTTP_400_BAD_REQUEST)
     
+@extend_schema(
+    responses={200: None},
+    description="Delete a book by ID"
+)
 @api_view(["DELETE"])
 def deleteBook(request,bookId):
     if(request.method == "DELETE"):
         currentBook = Book.objects.get(pk=bookId)
         currentBook.delete()
-        return Response(currentBook.data, status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
