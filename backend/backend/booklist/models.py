@@ -8,9 +8,13 @@ class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     description = models.TextField()
-    cover = models.ImageField(upload_to="images/", null=True)
+    isbn = models.CharField(max_length=13, blank=True, null=True)
+    genre = models.CharField(max_length=50, blank=True, null=True)
+    cover = models.ImageField(upload_to="images/", null=True, blank=True)
+    coverUrl = models.URLField(max_length=500, blank=True, null=True)
     bought = models.BooleanField(default=False)
     read = models.BooleanField(default=False)
+    onBookshelf = models.BooleanField(default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):

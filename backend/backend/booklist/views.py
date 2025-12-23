@@ -1,90 +1,198 @@
-from django.shortcuts import render, redirect
-
-from . import forms
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import Book
-from .serializer import BookSerializer
+from .serializer import BookSerializer, UserSerializer
 
-# Create your views here.
 
-def loginPage(request):
-    loginform = forms.LoginForm()
-    message = ""
+# ============== AUTHENTICATION ==============
+@extend_schema(
+    request={
+        "application/json": {
+            "type": "object",
+            "properties": {
+                "username": {"type": "string"},
+                "password": {"type": "string"}
+            },
+            "required": ["username", "password"]
+        }
+    },
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "access": {"type": "string"},
+                "refresh": {"type": "string"},
+                "user": {"type": "object"}
+            }
+        }
+    },
+    description="Login with username and password to get JWT tokens",
+    tags=["Authentication"]
+)
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def login(request):
+    """
+    Login with username and password
+
+    Returns access and refresh JWT tokens
+    """
+    username = request.data.get('username')
+    password = request.data.get('password')
+
+    if not username or not password:
+        return Response(
+            {"error": "Username and password are required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    user = authenticate(username=username, password=password)
+
+    if user is not None:
+        refresh = RefreshToken.for_user(user)
+        user_data = UserSerializer(user).data
+
+        return Response({
+            "access": str(refresh.access_token),
+            "refresh": str(refresh),
+            "user": user_data
+        }, status=status.HTTP_200_OK)
+
+    return Response(
+        {"error": "Invalid credentials"},
+        status=status.HTTP_401_UNAUTHORIZED
+    )
+
+
+@extend_schema(
+    request=UserSerializer,
+    responses={201: UserSerializer},
+    description="Register a new user",
+    tags=["Authentication"]
+)
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def register(request):
+    """
+    Register a new user
+
+    Required fields: username, password, email
+    Optional: first_name, last_name
+    """
+    serialized = UserSerializer(data=request.data)
+    if serialized.is_valid():
+        user = serialized.save()
+        user.set_password(request.data.get('password'))
+        user.save()
+        return Response(serialized.data, status=status.HTTP_201_CREATED)
+    return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ============== BOOKS ==============
+@extend_schema(
+    request=BookSerializer,
+    responses={
+        200: BookSerializer(many=True),
+        201: BookSerializer
+    },
+    description="Get all books (GET) or create a new book (POST)",
+    tags=["Books"]
+)
+@api_view(["GET", "POST"])
+@permission_classes([IsAuthenticated])
+def bookList(request):
+    """
+    GET: List all books for the authenticated user
+    POST: Create a new book (user is automatically assigned)
+    """
+    if request.method == "GET":
+        allBooks = Book.objects.filter(user=request.user).order_by('author')
+        serialized = BookSerializer(allBooks, many=True)
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
     if request.method == "POST":
-        loginform = forms.LoginForm(request.POST)
-        if loginform.is_valid():
-            user = authenticate(
-                username = loginform.cleaned_data["username"],
-                password = loginform.cleaned_data["password"],
-            )
-            if user is not None:
-                login(request,user)
-                return redirect("/")
-            else:
-                message = "Login failed!"
-    context = {"loginform":loginform, "message":message}
-    return render(request, "login.html", context)
+        serialized = BookSerializer(data=request.data)
+        if serialized.is_valid():
+            serialized.save(user=request.user)
+            return Response(serialized.data, status=status.HTTP_201_CREATED)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@login_required
-def homePage(request):
-    return render(request, "index.html")
-
-def logoutUser(request):
-    logout(request)
-    return redirect("/")
-
-def registerPage(request):
-    registerForm = forms.RegisterForm()
-    context = {"registerform":registerForm}
-    return render(request, "register.html", context)
-
-def registerUser(request):
-    if request.method == "POST":
-        registerform = forms.RegisterForm(request.POST)
-        if registerform.is_valid():
-            _username = registerform.cleaned_data["username"]
-            _password = registerform.cleaned_data["password"]
-            _first_name = registerform.cleaned_data["first_name"]
-            _last_name = registerform.cleaned_data["last_name"]
-            _email = registerform.cleaned_data["email"]
-            newUser = User(username = _username, first_name = _first_name, last_name = _last_name, email=_email)
-            newUser.set_password(_password)
-            newUser.save()
-            return redirect("/")
 
 @extend_schema(
     request=BookSerializer,
-    responses={200: BookSerializer(many=True)},
-    description="Get all books or create a new book"
+    responses={
+        200: BookSerializer,
+        204: None
+    },
+    description="Get, update (PATCH) or delete a specific book",
+    tags=["Books"]
 )
-@api_view(["GET","POST"])
-def bookList(request):
+@api_view(["GET", "PATCH", "DELETE"])
+@permission_classes([IsAuthenticated])
+def bookDetail(request, bookId):
+    """
+    GET: Get a specific book
+    PATCH: Update a book (partial update)
+    DELETE: Delete a book
+    """
+    try:
+        book = Book.objects.get(pk=bookId, user=request.user)
+    except Book.DoesNotExist:
+        return Response(
+            {"error": "Book not found or you don't have permission"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
     if request.method == "GET":
-        allBooks = Book.objects.all().order_by('author')
-        serialized = BookSerializer(allBooks, many = True)
-        return Response(serialized.data)
-    if request.method == "POST":
-        serialized = BookSerializer(data = request.data)
+        serialized = BookSerializer(book)
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+    if request.method == "PATCH":
+        serialized = BookSerializer(book, data=request.data, partial=True)
         if serialized.is_valid():
-            serialized.save(user=request.user)
-            return Response(serialized.data, status.HTTP_201_CREATED)
-        return Response(serialized.errors, status.HTTP_400_BAD_REQUEST)
-    
+            serialized.save()
+            return Response(serialized.data, status=status.HTTP_200_OK)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "DELETE":
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# ============== USER PROFILE ==============
 @extend_schema(
-    responses={200: None},
-    description="Delete a book by ID"
+    request=UserSerializer,
+    responses={200: UserSerializer},
+    description="Get or update the authenticated user's profile",
+    tags=["User"]
 )
-@api_view(["DELETE"])
-def deleteBook(request,bookId):
-    if(request.method == "DELETE"):
-        currentBook = Book.objects.get(pk=bookId)
-        currentBook.delete()
-        return Response(status=status.HTTP_200_OK)
+@api_view(["GET", "PATCH"])
+@permission_classes([IsAuthenticated])
+def userProfile(request):
+    """
+    GET: Get current user's profile
+    PATCH: Update user profile (username, email, first_name, last_name, password)
+    """
+    user = request.user
+
+    if request.method == "GET":
+        serialized = UserSerializer(user)
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+    if request.method == "PATCH":
+        serialized = UserSerializer(user, data=request.data, partial=True)
+        if serialized.is_valid():
+            serialized.save()
+            # If password is in the request, hash it
+            if 'password' in request.data:
+                user.set_password(request.data['password'])
+                user.save()
+            return Response(serialized.data, status=status.HTTP_200_OK)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
