@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, BasePermission
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
 from django.contrib.auth.models import User
@@ -9,6 +9,17 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import Book
 from .serializer import BookSerializer, UserSerializer
+
+
+# Custom permission for superusers only
+class IsSuperUser(BasePermission):
+    """
+    Allow access only to superusers.
+    """
+    message = "Insufficient permissions"
+
+    def has_permission(self, request, view):
+        return request.user and request.user.is_authenticated and request.user.is_superuser
 
 
 # ============== AUTHENTICATION ==============
@@ -196,3 +207,125 @@ def userProfile(request):
                 user.save()
             return Response(serialized.data, status=status.HTTP_200_OK)
         return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ============== ADMIN - USERS ==============
+@extend_schema(
+    responses={200: UserSerializer(many=True)},
+    description="[ADMIN ONLY] Get all users in the system",
+    tags=["Admin"]
+)
+@api_view(["GET"])
+@permission_classes([IsSuperUser])
+def adminUserList(request):
+    """
+    [ADMIN ONLY] List all users
+
+    Requires: is_superuser=True
+    """
+    users = User.objects.all().order_by('username')
+    serialized = UserSerializer(users, many=True)
+    return Response(serialized.data, status=status.HTTP_200_OK)
+
+
+@extend_schema(
+    request=UserSerializer,
+    responses={
+        200: UserSerializer,
+        204: None
+    },
+    description="[ADMIN ONLY] Update or delete a specific user by ID",
+    tags=["Admin"]
+)
+@api_view(["PATCH", "DELETE"])
+@permission_classes([IsSuperUser])
+def adminUserDetail(request, userId):
+    """
+    [ADMIN ONLY] Update or delete a user by ID
+
+    PATCH: Update user (partial update)
+    DELETE: Delete user
+
+    Requires: is_superuser=True
+    """
+    try:
+        user = User.objects.get(pk=userId)
+    except User.DoesNotExist:
+        return Response(
+            {"error": "User not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    if request.method == "PATCH":
+        serialized = UserSerializer(user, data=request.data, partial=True)
+        if serialized.is_valid():
+            serialized.save()
+            # If password is in the request, hash it
+            if 'password' in request.data:
+                user.set_password(request.data['password'])
+                user.save()
+            return Response(serialized.data, status=status.HTTP_200_OK)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "DELETE":
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# ============== ADMIN - BOOKS ==============
+@extend_schema(
+    responses={200: BookSerializer(many=True)},
+    description="[ADMIN ONLY] Get all books from all users",
+    tags=["Admin"]
+)
+@api_view(["GET"])
+@permission_classes([IsSuperUser])
+def adminBookList(request):
+    """
+    [ADMIN ONLY] List all books from all users
+
+    Requires: is_superuser=True
+    """
+    books = Book.objects.all().order_by('author')
+    serialized = BookSerializer(books, many=True)
+    return Response(serialized.data, status=status.HTTP_200_OK)
+
+
+@extend_schema(
+    request=BookSerializer,
+    responses={
+        200: BookSerializer,
+        204: None
+    },
+    description="[ADMIN ONLY] Update or delete a specific book by ID",
+    tags=["Admin"]
+)
+@api_view(["PATCH", "DELETE"])
+@permission_classes([IsSuperUser])
+def adminBookDetail(request, bookId):
+    """
+    [ADMIN ONLY] Update or delete a book by ID
+
+    PATCH: Update book (partial update)
+    DELETE: Delete book
+
+    Requires: is_superuser=True
+    """
+    try:
+        book = Book.objects.get(pk=bookId)
+    except Book.DoesNotExist:
+        return Response(
+            {"error": "Book not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    if request.method == "PATCH":
+        serialized = BookSerializer(book, data=request.data, partial=True)
+        if serialized.is_valid():
+            serialized.save()
+            return Response(serialized.data, status=status.HTTP_200_OK)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "DELETE":
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
