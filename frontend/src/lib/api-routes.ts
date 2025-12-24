@@ -27,35 +27,35 @@ export const authApi = {
 
 export const bookApi = {
 	// create book
-	create: (data: CreateBookDto) => api.post<Book>("/books", data),
+	create: (data: CreateBookDto) => api.post<Book>("/books/", data),
 
 	// get books
-	getAll: () => api.get<Book[]>("/books"),
-	getById: (id: string) => api.get<Book>(`/books/${id}`),
+	getAll: () => api.get<Book[]>("/books/"),
+	getById: (id: string) => api.get<Book>(`/books/${id}/`),
 
 	// update book
 	update: (id: string, data: UpdateBookDto) =>
-		api.patch<Book>(`/books/${id}`, data),
+		api.patch<Book>(`/books/${id}/`, data),
 
 	// delete
-	delete: (id: string) => api.delete(`/books/${id}`),
+	delete: (id: string) => api.delete(`/books/${id}/`),
 };
 
 export const adminApi = {
 	// Users management
 	users: {
-		getAll: () => api.get<User[]>("/admin/users"),
+		getAll: () => api.get<User[]>("/admin/users/"),
 		update: (userId: number, data: Partial<User>) =>
-			api.patch<User>(`/admin/users/${userId}`, data),
-		delete: (userId: number) => api.delete(`/admin/users/${userId}`),
+			api.patch<User>(`/admin/users/${userId}/`, data),
+		delete: (userId: number) => api.delete(`/admin/users/${userId}/`),
 	},
 
 	// Books management
 	books: {
-		getAll: () => api.get<Book[]>("/admin/books"),
-		create: (data: AdminCreateBookDto) => api.post<Book>("/admin/books", data),
+		getAll: () => api.get<Book[]>("/admin/books/"),
+		create: (data: AdminCreateBookDto) => api.post<Book>("/admin/books/", data),
 		update: (bookId: number, data: UpdateBookDto) =>
-			api.patch<Book>(`/admin/books/${bookId}`, data),
-		delete: (bookId: number) => api.delete(`/admin/books/${bookId}`),
+			api.patch<Book>(`/admin/books/${bookId}/`, data),
+		delete: (bookId: number) => api.delete(`/admin/books/${bookId}/`),
 	},
 };

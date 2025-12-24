@@ -60,7 +60,7 @@ export default function LoginPage() {
 
 	return (
 		<div className="w-full min-h-screen flex items-center justify-center bg-linear-to-br from-amber-50 via-stone-100 to-amber-100">
-			<div className="w-full max-w-md px-6">
+			<div className="w-full max-w-lg px-6">
 				<Card className="bg-white border-stone-200">
 					<CardHeader className="text-center">
 						<div className="inline-block p-3 bg-amber-100 rounded-full mb-4 mx-auto">
@@ -149,13 +149,6 @@ export default function LoginPage() {
 						</p>
 					</CardFooter>
 				</Card>
-
-				{/* Decorative element */}
-				<div className="mt-6 text-center">
-					<p className="text-xs text-stone-500">
-						Secure login powered by your book collection
-					</p>
-				</div>
 			</div>
 		</div>
 	);
