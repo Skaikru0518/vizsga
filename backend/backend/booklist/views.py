@@ -274,21 +274,52 @@ def adminUserDetail(request, userId):
 
 # ============== ADMIN - BOOKS ==============
 @extend_schema(
-    responses={200: BookSerializer(many=True)},
-    description="[ADMIN ONLY] Get all books from all users",
+    request=BookSerializer,
+    responses={
+        200: BookSerializer(many=True),
+        201: BookSerializer
+    },
+    description="[ADMIN ONLY] Get all books (GET) or create a book for any user (POST)",
     tags=["Admin"]
 )
-@api_view(["GET"])
+@api_view(["GET", "POST"])
 @permission_classes([IsSuperUser])
 def adminBookList(request):
     """
-    [ADMIN ONLY] List all books from all users
+    [ADMIN ONLY] List all books from all users or create a book
+
+    GET: List all books from all users
+    POST: Create a book (user ID must be provided in request body)
 
     Requires: is_superuser=True
     """
-    books = Book.objects.all().order_by('author')
-    serialized = BookSerializer(books, many=True)
-    return Response(serialized.data, status=status.HTTP_200_OK)
+    if request.method == "GET":
+        books = Book.objects.all().order_by('author')
+        serialized = BookSerializer(books, many=True)
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+    if request.method == "POST":
+        # Admin can specify the user ID
+        user_id = request.data.get('user')
+        if not user_id:
+            return Response(
+                {"error": "user field is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            user = User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return Response(
+                {"error": "User not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serialized = BookSerializer(data=request.data)
+        if serialized.is_valid():
+            serialized.save(user=user)
+            return Response(serialized.data, status=status.HTTP_201_CREATED)
+        return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @extend_schema(

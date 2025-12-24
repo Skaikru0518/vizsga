@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
+import LoadingPage from "./loading";
+import { AuthProvider } from "@/context/auth-context";
 
 const interSans = Inter({
 	variable: "--font-inter-sans",
@@ -19,7 +22,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${interSans.variable} antialiased`}>{children}</body>
+			<body className={`${interSans.variable} antialiased`}>
+				<AuthProvider>
+					<Suspense fallback={<LoadingPage />}>
+						{children}
+					</Suspense>
+				</AuthProvider>
+			</body>
 		</html>
 	);
 }

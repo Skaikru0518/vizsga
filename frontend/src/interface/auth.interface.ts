@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 // Request DTOs
 export interface RegisterDto {
 	username: string;
@@ -37,4 +39,16 @@ export interface RegisterResponse {
 	email: string;
 	first_name: string;
 	last_name: string;
+}
+
+export interface AuthContextType {
+	user: User | null;
+	login: (credentials: LoginDto) => Promise<void>;
+	logout: () => void;
+	isLoading: boolean;
+	isAuthenticated: boolean;
+}
+
+export interface AuthProviderProps {
+	children: ReactNode;
 }
