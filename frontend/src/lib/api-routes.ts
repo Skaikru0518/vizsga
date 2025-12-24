@@ -1,5 +1,6 @@
 import {
 	Book,
+	BookMarkDto,
 	CreateBookDto,
 	LoginDto,
 	LoginResponse,
@@ -7,6 +8,7 @@ import {
 	RegisterResponse,
 	UpdateBookDto,
 	User,
+	UserBookMark,
 } from "@/interface";
 import api from "./api";
 
@@ -39,6 +41,20 @@ export const bookApi = {
 
 	// delete
 	delete: (id: string) => api.delete(`/books/${id}/`),
+
+	// mark/unmark books (requires authentication)
+	mark: {
+		// Create or update mark
+		set: (bookId: number, data: BookMarkDto) =>
+			api.post<UserBookMark>(`/books/${bookId}/mark/`, data),
+
+		// Update existing mark
+		update: (bookId: number, data: BookMarkDto) =>
+			api.patch<UserBookMark>(`/books/${bookId}/mark/`, data),
+
+		// Remove mark
+		remove: (bookId: number) => api.delete(`/books/${bookId}/mark/`),
+	},
 };
 
 export const adminApi = {

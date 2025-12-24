@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Book
+from .models import Book, UserBook
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,9 +8,33 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
         read_only_fields = ['id', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
 
+
+class UserBookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserBook
+        fields = ['id', 'user', 'book', 'bought', 'read', 'onBookshelf', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
+
 class BookSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    user_mark = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
-        fields = "__all__"
+        fields = ['id', 'title', 'author', 'description', 'isbn', 'genre', 'cover', 'coverUrl', 'user', 'user_mark']
+
+    def get_user_mark(self, obj):
+        """Return the current user's mark for this book, if any"""
+        request = self.context.get('request')
+        if request and request.user.is_authenticated:
+            try:
+                user_book = UserBook.objects.get(user=request.user, book=obj)
+                return {
+                    'bought': user_book.bought,
+                    'read': user_book.read,
+                    'onBookshelf': user_book.onBookshelf
+                }
+            except UserBook.DoesNotExist:
+                return None
+        return None

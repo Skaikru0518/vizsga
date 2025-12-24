@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import Book
-from .serializer import BookSerializer, UserSerializer
+from .models import Book, UserBook
+from .serializer import BookSerializer, UserSerializer, UserBookSerializer
 
 
 # Custom permission for superusers only
@@ -113,23 +113,31 @@ def register(request):
         200: BookSerializer(many=True),
         201: BookSerializer
     },
-    description="Get all books (GET) or create a new book (POST)",
+    description="Get all books from all users (GET) or create a new book (POST - requires authentication)",
     tags=["Books"]
 )
 @api_view(["GET", "POST"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])  # GET is public, POST will check authentication manually
 def bookList(request):
     """
-    GET: List all books for the authenticated user
-    POST: Create a new book (user is automatically assigned)
+    GET: List all books from all users (public access)
+    POST: Create a new book (requires authentication, user is automatically assigned)
     """
     if request.method == "GET":
-        allBooks = Book.objects.filter(user=request.user).order_by('author')
-        serialized = BookSerializer(allBooks, many=True)
+        # Public access - return all books with user_mark for authenticated users
+        allBooks = Book.objects.all().order_by('author')
+        serialized = BookSerializer(allBooks, many=True, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     if request.method == "POST":
-        serialized = BookSerializer(data=request.data)
+        # Only authenticated users can create books
+        if not request.user.is_authenticated:
+            return Response(
+                {"error": "Authentication required to create books"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        serialized = BookSerializer(data=request.data, context={'request': request})
         if serialized.is_valid():
             serialized.save(user=request.user)
             return Response(serialized.data, status=status.HTTP_201_CREATED)
@@ -142,31 +150,44 @@ def bookList(request):
         200: BookSerializer,
         204: None
     },
-    description="Get, update (PATCH) or delete a specific book",
+    description="Get (public), update (owner only) or delete (owner only) a specific book",
     tags=["Books"]
 )
 @api_view(["GET", "PATCH", "DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])  # GET is public, PATCH/DELETE check ownership
 def bookDetail(request, bookId):
     """
-    GET: Get a specific book
-    PATCH: Update a book (partial update)
-    DELETE: Delete a book
+    GET: Get a specific book (public access)
+    PATCH: Update a book (only book owner)
+    DELETE: Delete a book (only book owner)
     """
     try:
-        book = Book.objects.get(pk=bookId, user=request.user)
+        book = Book.objects.get(pk=bookId)
     except Book.DoesNotExist:
         return Response(
-            {"error": "Book not found or you don't have permission"},
+            {"error": "Book not found"},
             status=status.HTTP_404_NOT_FOUND
         )
 
     if request.method == "GET":
-        serialized = BookSerializer(book)
+        serialized = BookSerializer(book, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    # PATCH and DELETE require ownership
+    if not request.user.is_authenticated:
+        return Response(
+            {"error": "Authentication required"},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
+
+    if book.user != request.user:
+        return Response(
+            {"error": "You don't have permission to modify this book"},
+            status=status.HTTP_403_FORBIDDEN
+        )
+
     if request.method == "PATCH":
-        serialized = BookSerializer(book, data=request.data, partial=True)
+        serialized = BookSerializer(book, data=request.data, partial=True, context={'request': request})
         if serialized.is_valid():
             serialized.save()
             return Response(serialized.data, status=status.HTTP_200_OK)
@@ -360,3 +381,114 @@ def adminBookDetail(request, bookId):
     if request.method == "DELETE":
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# ============== USER BOOK MARKS ==============
+@extend_schema(
+    request={
+        "application/json": {
+            "type": "object",
+            "properties": {
+                "bought": {"type": "boolean"},
+                "read": {"type": "boolean"},
+                "onBookshelf": {"type": "boolean"}
+            }
+        }
+    },
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "bought": {"type": "boolean"},
+                "read": {"type": "boolean"},
+                "onBookshelf": {"type": "boolean"}
+            }
+        },
+        201: {
+            "type": "object",
+            "properties": {
+                "bought": {"type": "boolean"},
+                "read": {"type": "boolean"},
+                "onBookshelf": {"type": "boolean"}
+            }
+        }
+    },
+    description="Mark a book (POST/PATCH) or remove mark (DELETE) - requires authentication",
+    tags=["Book Marks"]
+)
+@api_view(["POST", "PATCH", "DELETE"])
+@permission_classes([IsAuthenticated])
+def bookMark(request, bookId):
+    """
+    POST: Mark a book (bought/read/onBookshelf)
+    PATCH: Update existing mark
+    DELETE: Remove mark
+    """
+    try:
+        book = Book.objects.get(pk=bookId)
+    except Book.DoesNotExist:
+        return Response(
+            {"error": "Book not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+    if request.method == "POST":
+        # Create or get existing mark
+        user_book, created = UserBook.objects.get_or_create(
+            user=request.user,
+            book=book,
+            defaults={
+                'bought': request.data.get('bought', False),
+                'read': request.data.get('read', False),
+                'onBookshelf': request.data.get('onBookshelf', False)
+            }
+        )
+
+        if not created:
+            # If already exists, update it
+            user_book.bought = request.data.get('bought', user_book.bought)
+            user_book.read = request.data.get('read', user_book.read)
+            user_book.onBookshelf = request.data.get('onBookshelf', user_book.onBookshelf)
+            user_book.save()
+
+        return Response({
+            'bought': user_book.bought,
+            'read': user_book.read,
+            'onBookshelf': user_book.onBookshelf
+        }, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
+
+    if request.method == "PATCH":
+        try:
+            user_book = UserBook.objects.get(user=request.user, book=book)
+        except UserBook.DoesNotExist:
+            return Response(
+                {"error": "Mark not found. Use POST to create one."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Update only provided fields
+        if 'bought' in request.data:
+            user_book.bought = request.data['bought']
+        if 'read' in request.data:
+            user_book.read = request.data['read']
+        if 'onBookshelf' in request.data:
+            user_book.onBookshelf = request.data['onBookshelf']
+
+        user_book.save()
+
+        return Response({
+            'bought': user_book.bought,
+            'read': user_book.read,
+            'onBookshelf': user_book.onBookshelf
+        }, status=status.HTTP_200_OK)
+
+    if request.method == "DELETE":
+        try:
+            user_book = UserBook.objects.get(user=request.user, book=book)
+            user_book.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except UserBook.DoesNotExist:
+            return Response(
+                {"error": "Mark not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )

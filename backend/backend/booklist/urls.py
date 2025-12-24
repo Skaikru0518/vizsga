@@ -9,6 +9,7 @@ urlpatterns = [
     path('profile/', views.userProfile, name="userProfile"),
     path('books/', views.bookList, name="bookList"),
     path('books/<int:bookId>/', views.bookDetail, name="bookDetail"),
+    path('books/<int:bookId>/mark/', views.bookMark, name="bookMark"),
 
     # Admin Endpoints (Superuser only)
     path('admin/users/', views.adminUserList, name="adminUserList"),
