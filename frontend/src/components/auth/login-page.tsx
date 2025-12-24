@@ -67,10 +67,10 @@ export default function LoginPage() {
 							<BookOpen className="w-8 h-8 text-amber-700" />
 						</div>
 						<CardTitle className="text-3xl text-stone-800">
-							Welcome Back
+							Welcome to ReadList
 						</CardTitle>
 						<CardDescription className="text-stone-600">
-							Sign in to your book collection
+							Sign in to continue your reading journey
 						</CardDescription>
 					</CardHeader>
 

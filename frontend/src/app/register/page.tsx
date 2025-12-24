@@ -42,10 +42,10 @@ export default function RegisterPage() {
 							<BookOpen className="w-8 h-8 text-amber-700" />
 						</div>
 						<CardTitle className="text-3xl text-stone-800">
-							Join Our Library
+							Join ReadList
 						</CardTitle>
 						<CardDescription className="text-stone-600">
-							Create an account to start your book collection
+							Create an account to track your reading journey
 						</CardDescription>
 					</CardHeader>
 
