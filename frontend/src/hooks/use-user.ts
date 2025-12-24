@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth-context";
+import { AuthContextType } from "@/interface";
 
-export function useUser() {
+export function useUser(): AuthContextType {
 	const context = useContext(AuthContext);
 
 	if (context === undefined) {

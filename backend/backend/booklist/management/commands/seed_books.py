@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Command(BaseCommand):
-    help = 'Seeds the database with 50 real books'
+    help = 'Seeds the database with 100+ real books including Twin Peaks novels'
 
     def handle(self, *args, **kwargs):
         # Get or create a default user for seeding
@@ -432,6 +432,422 @@ class Command(BaseCommand):
                 'isbn': '9780062316097',
                 'genre': 'Non-Fiction',
                 'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg'
+            },
+            {
+                'title': 'The Hitchhiker\'s Guide to the Galaxy',
+                'author': 'Douglas Adams',
+                'description': 'A comic science fiction series about the adventures of Arthur Dent.',
+                'isbn': '9780345391803',
+                'genre': 'Science Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780345391803-L.jpg'
+            },
+            {
+                'title': 'A Game of Thrones',
+                'author': 'George R.R. Martin',
+                'description': 'The first novel in an epic fantasy series about power struggles in Westeros.',
+                'isbn': '9780553103540',
+                'genre': 'Fantasy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780553103540-L.jpg'
+            },
+            {
+                'title': 'The Name of the Wind',
+                'author': 'Patrick Rothfuss',
+                'description': 'A fantasy novel about Kvothe, a legendary figure telling his own story.',
+                'isbn': '9780756404079',
+                'genre': 'Fantasy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780756404079-L.jpg'
+            },
+            {
+                'title': 'The Stand',
+                'author': 'Stephen King',
+                'description': 'A post-apocalyptic horror novel about a pandemic and the survivors.',
+                'isbn': '9780307743688',
+                'genre': 'Horror',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780307743688-L.jpg'
+            },
+            {
+                'title': 'Ender\'s Game',
+                'author': 'Orson Scott Card',
+                'description': 'A military science fiction novel about a young genius trained to fight aliens.',
+                'isbn': '9780812550702',
+                'genre': 'Science Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780812550702-L.jpg'
+            },
+            {
+                'title': 'The Silmarillion',
+                'author': 'J.R.R. Tolkien',
+                'description': 'A collection of mythopoeic stories about the history of Middle-earth.',
+                'isbn': '9780618391110',
+                'genre': 'Fantasy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780618391110-L.jpg'
+            },
+            {
+                'title': 'Educated',
+                'author': 'Tara Westover',
+                'description': 'A memoir about a woman who grows up in a survivalist family and escapes to learn.',
+                'isbn': '9780399590504',
+                'genre': 'Memoir',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780399590504-L.jpg'
+            },
+            {
+                'title': 'Becoming',
+                'author': 'Michelle Obama',
+                'description': 'A memoir by the former First Lady of the United States.',
+                'isbn': '9781524763138',
+                'genre': 'Memoir',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781524763138-L.jpg'
+            },
+            {
+                'title': 'The 7 Habits of Highly Effective People',
+                'author': 'Stephen R. Covey',
+                'description': 'A self-help book about achieving personal and professional effectiveness.',
+                'isbn': '9781982137274',
+                'genre': 'Self-Help',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781982137274-L.jpg'
+            },
+            {
+                'title': 'Atomic Habits',
+                'author': 'James Clear',
+                'description': 'A practical guide to building good habits and breaking bad ones.',
+                'isbn': '9780735211292',
+                'genre': 'Self-Help',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg'
+            },
+            {
+                'title': 'The Power of Now',
+                'author': 'Eckhart Tolle',
+                'description': 'A guide to spiritual enlightenment focused on living in the present moment.',
+                'isbn': '9781577314806',
+                'genre': 'Spirituality',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781577314806-L.jpg'
+            },
+            {
+                'title': 'Thinking, Fast and Slow',
+                'author': 'Daniel Kahneman',
+                'description': 'A book about the two systems that drive the way we think.',
+                'isbn': '9780374533557',
+                'genre': 'Psychology',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780374533557-L.jpg'
+            },
+            {
+                'title': 'The Subtle Art of Not Giving a F*ck',
+                'author': 'Mark Manson',
+                'description': 'A counterintuitive approach to living a good life.',
+                'isbn': '9780062457714',
+                'genre': 'Self-Help',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780062457714-L.jpg'
+            },
+            {
+                'title': 'Man\'s Search for Meaning',
+                'author': 'Viktor E. Frankl',
+                'description': 'A memoir about surviving the Holocaust and finding purpose in life.',
+                'isbn': '9780807014295',
+                'genre': 'Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780807014295-L.jpg'
+            },
+            {
+                'title': 'The Lean Startup',
+                'author': 'Eric Ries',
+                'description': 'A methodology for developing businesses and products.',
+                'isbn': '9780307887894',
+                'genre': 'Business',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780307887894-L.jpg'
+            },
+            {
+                'title': 'Zero to One',
+                'author': 'Peter Thiel',
+                'description': 'Notes on startups and how to build the future.',
+                'isbn': '9780804139298',
+                'genre': 'Business',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780804139298-L.jpg'
+            },
+            {
+                'title': 'The Immortal Life of Henrietta Lacks',
+                'author': 'Rebecca Skloot',
+                'description': 'The story of a woman whose cells revolutionized medicine.',
+                'isbn': '9781400052189',
+                'genre': 'Non-Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781400052189-L.jpg'
+            },
+            {
+                'title': 'Into the Wild',
+                'author': 'Jon Krakauer',
+                'description': 'The story of Christopher McCandless\'s journey into the Alaskan wilderness.',
+                'isbn': '9780385486804',
+                'genre': 'Biography',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780385486804-L.jpg'
+            },
+            {
+                'title': 'The Glass Castle',
+                'author': 'Jeannette Walls',
+                'description': 'A memoir about growing up in a dysfunctional family.',
+                'isbn': '9780743247542',
+                'genre': 'Memoir',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780743247542-L.jpg'
+            },
+            {
+                'title': 'Born a Crime',
+                'author': 'Trevor Noah',
+                'description': 'A memoir about growing up in South Africa during and after apartheid.',
+                'isbn': '9780399588174',
+                'genre': 'Memoir',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780399588174-L.jpg'
+            },
+            {
+                'title': 'The Gene: An Intimate History',
+                'author': 'Siddhartha Mukherjee',
+                'description': 'A history of genetics and its impact on humanity.',
+                'isbn': '9781476733500',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781476733500-L.jpg'
+            },
+            {
+                'title': 'A Brief History of Time',
+                'author': 'Stephen Hawking',
+                'description': 'A landmark volume in science writing about cosmology.',
+                'isbn': '9780553380163',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780553380163-L.jpg'
+            },
+            {
+                'title': 'The Sixth Extinction',
+                'author': 'Elizabeth Kolbert',
+                'description': 'An examination of the current mass extinction event.',
+                'isbn': '9781250062185',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781250062185-L.jpg'
+            },
+            {
+                'title': 'Guns, Germs, and Steel',
+                'author': 'Jared Diamond',
+                'description': 'A book about the fates of human societies and environmental factors.',
+                'isbn': '9780393317558',
+                'genre': 'Anthropology',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780393317558-L.jpg'
+            },
+            {
+                'title': 'The Emperor of All Maladies',
+                'author': 'Siddhartha Mukherjee',
+                'description': 'A biography of cancer and the fight against it.',
+                'isbn': '9781439170915',
+                'genre': 'Medical History',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781439170915-L.jpg'
+            },
+            {
+                'title': 'Quiet: The Power of Introverts',
+                'author': 'Susan Cain',
+                'description': 'A book about the power of introverts in a world that can\'t stop talking.',
+                'isbn': '9780307352156',
+                'genre': 'Psychology',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780307352156-L.jpg'
+            },
+            {
+                'title': 'Outliers',
+                'author': 'Malcolm Gladwell',
+                'description': 'A book about what makes high-achievers different.',
+                'isbn': '9780316017930',
+                'genre': 'Psychology',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780316017930-L.jpg'
+            },
+            {
+                'title': 'The Tipping Point',
+                'author': 'Malcolm Gladwell',
+                'description': 'How little things can make a big difference.',
+                'isbn': '9780316346627',
+                'genre': 'Sociology',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780316346627-L.jpg'
+            },
+            {
+                'title': 'Freakonomics',
+                'author': 'Steven D. Levitt',
+                'description': 'A rogue economist explores the hidden side of everything.',
+                'isbn': '9780060731328',
+                'genre': 'Economics',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780060731328-L.jpg'
+            },
+            {
+                'title': 'The Art of War',
+                'author': 'Sun Tzu',
+                'description': 'An ancient Chinese military treatise on strategy and tactics.',
+                'isbn': '9781599869773',
+                'genre': 'Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781599869773-L.jpg'
+            },
+            {
+                'title': 'Meditations',
+                'author': 'Marcus Aurelius',
+                'description': 'Personal writings by the Roman Emperor on Stoic philosophy.',
+                'isbn': '9780812968255',
+                'genre': 'Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780812968255-L.jpg'
+            },
+            {
+                'title': 'The Republic',
+                'author': 'Plato',
+                'description': 'A Socratic dialogue concerning justice and the order of the city-state.',
+                'isbn': '9780140449143',
+                'genre': 'Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780140449143-L.jpg'
+            },
+            {
+                'title': 'The Prince',
+                'author': 'Niccolò Machiavelli',
+                'description': 'A political treatise on leadership and power.',
+                'isbn': '9780140449150',
+                'genre': 'Political Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780140449150-L.jpg'
+            },
+            {
+                'title': 'The Communist Manifesto',
+                'author': 'Karl Marx',
+                'description': 'A political pamphlet advocating for class struggle.',
+                'isbn': '9780140447576',
+                'genre': 'Political Philosophy',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780140447576-L.jpg'
+            },
+            {
+                'title': 'On the Origin of Species',
+                'author': 'Charles Darwin',
+                'description': 'The foundational work of evolutionary biology.',
+                'isbn': '9780140439120',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780140439120-L.jpg'
+            },
+            {
+                'title': 'The Selfish Gene',
+                'author': 'Richard Dawkins',
+                'description': 'A gene-centered view of evolution.',
+                'isbn': '9780199291151',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780199291151-L.jpg'
+            },
+            {
+                'title': 'Cosmos',
+                'author': 'Carl Sagan',
+                'description': 'A journey through space and time exploring the universe.',
+                'isbn': '9780345539434',
+                'genre': 'Science',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780345539434-L.jpg'
+            },
+            {
+                'title': 'The Diary of a Young Girl',
+                'author': 'Anne Frank',
+                'description': 'The diary of a Jewish girl hiding during the Holocaust.',
+                'isbn': '9780553296983',
+                'genre': 'Biography',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780553296983-L.jpg'
+            },
+            {
+                'title': 'Night',
+                'author': 'Elie Wiesel',
+                'description': 'A memoir of experiences in Nazi concentration camps.',
+                'isbn': '9780374500016',
+                'genre': 'Memoir',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780374500016-L.jpg'
+            },
+            {
+                'title': 'The Color Purple',
+                'author': 'Alice Walker',
+                'description': 'An epistolary novel about an African-American woman in the South.',
+                'isbn': '9780156028356',
+                'genre': 'Historical Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780156028356-L.jpg'
+            },
+            {
+                'title': 'Beloved',
+                'author': 'Toni Morrison',
+                'description': 'A novel about the legacy of slavery.',
+                'isbn': '9781400033416',
+                'genre': 'Historical Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781400033416-L.jpg'
+            },
+            {
+                'title': 'The Grapes of Wrath',
+                'author': 'John Steinbeck',
+                'description': 'A novel about a family during the Great Depression.',
+                'isbn': '9780143039433',
+                'genre': 'Historical Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780143039433-L.jpg'
+            },
+            {
+                'title': 'Of Mice and Men',
+                'author': 'John Steinbeck',
+                'description': 'A novella about two displaced migrant workers during the Great Depression.',
+                'isbn': '9780142000670',
+                'genre': 'Classic Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780142000670-L.jpg'
+            },
+            {
+                'title': 'The Sun Also Rises',
+                'author': 'Ernest Hemingway',
+                'description': 'A novel about American and British expatriates in Europe.',
+                'isbn': '9780743297332',
+                'genre': 'Classic Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780743297332-L.jpg'
+            },
+            {
+                'title': 'For Whom the Bell Tolls',
+                'author': 'Ernest Hemingway',
+                'description': 'A novel about an American fighting in the Spanish Civil War.',
+                'isbn': '9780684803357',
+                'genre': 'Historical Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780684803357-L.jpg'
+            },
+            {
+                'title': 'A Farewell to Arms',
+                'author': 'Ernest Hemingway',
+                'description': 'A novel about an American ambulance driver during World War I.',
+                'isbn': '9780684801469',
+                'genre': 'War Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780684801469-L.jpg'
+            },
+            {
+                'title': 'The Old Man and the Sea',
+                'author': 'Ernest Hemingway',
+                'description': 'A short novel about an aging fisherman\'s epic battle with a giant marlin.',
+                'isbn': '9780684801223',
+                'genre': 'Classic Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780684801223-L.jpg'
+            },
+            {
+                'title': 'The Sound and the Fury',
+                'author': 'William Faulkner',
+                'description': 'A novel about the decline of a Southern aristocratic family.',
+                'isbn': '9780679732242',
+                'genre': 'Classic Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780679732242-L.jpg'
+            },
+            {
+                'title': 'As I Lay Dying',
+                'author': 'William Faulkner',
+                'description': 'A novel about a family\'s journey to bury their matriarch.',
+                'isbn': '9780679732259',
+                'genre': 'Classic Fiction',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780679732259-L.jpg'
+            },
+            {
+                'title': 'Twin Peaks: The Final Dossier',
+                'author': 'Mark Frost',
+                'description': 'A novel expanding the Twin Peaks universe with FBI files and character backgrounds.',
+                'isbn': '9781250163301',
+                'genre': 'Mystery',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781250163301-L.jpg'
+            },
+            {
+                'title': 'The Secret History of Twin Peaks',
+                'author': 'Mark Frost',
+                'description': 'An epistolary novel revealing the secret history of Twin Peaks.',
+                'isbn': '9781250075567',
+                'genre': 'Mystery',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9781250075567-L.jpg'
+            },
+            {
+                'title': 'The Autobiography of F.B.I. Special Agent Dale Cooper',
+                'author': 'Scott Frost',
+                'description': 'The life story of Twin Peaks\' FBI agent Dale Cooper.',
+                'isbn': '9780671736880',
+                'genre': 'Mystery',
+                'coverUrl': 'https://covers.openlibrary.org/b/isbn/9780671736880-L.jpg'
             },
         ]
 

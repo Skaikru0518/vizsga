@@ -13,7 +13,8 @@ const interSans = Inter({
 
 export const metadata: Metadata = {
 	title: "ReadList - Track Your Reading Journey",
-	description: "A modern book tracking application to manage your reading list, mark books as read, and organize your personal library.",
+	description:
+		"A modern book tracking application to manage your reading list, mark books as read, and organize your personal library.",
 };
 
 export default function RootLayout({
@@ -23,7 +24,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${interSans.variable} antialiased`}>
+			<body
+				className={`${interSans.variable} antialiased bg-linear-to-br from-amber-50 via-stone-100 to-amber-100 min-h-screen`}
+			>
 				<AuthProvider>
 					<Suspense fallback={<LoadingPage />}>
 						<Navbar />

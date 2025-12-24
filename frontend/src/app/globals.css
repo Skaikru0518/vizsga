@@ -152,4 +152,27 @@
 		@apply active:scale-95!;
 		@apply disabled:opacity-50! disabled:cursor-not-allowed! disabled:hover:bg-red-600!;
 	}
+
+	/* Hero Background - Light gradient */
+	.hero-bg {
+		@apply bg-linear-to-r from-amber-100 via-amber-50 to-amber-100 py-12 px-4 mb-8 border-b border-amber-200;
+	}
+
+	/* Amber-themed Tabs */
+	.tabs-amber {
+		@apply bg-amber-100/50! border! border-amber-200!;
+	}
+
+	.tab-amber {
+		@apply data-[state=active]:bg-amber-600! data-[state=active]:text-white! data-[state=inactive]:text-amber-800! hover:bg-amber-200/50! transition-colors!;
+	}
+
+	/* Amber-themed Pagination */
+	.pagination-amber a[data-active="true"] {
+		@apply bg-amber-600! text-white! border-amber-600! hover:bg-amber-700!;
+	}
+
+	.pagination-amber a:not([data-active="true"]) {
+		@apply text-amber-800! hover:bg-amber-100! hover:text-amber-900!;
+	}
 }

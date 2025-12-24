@@ -21,12 +21,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
 	// load user from localstorage
 	useEffect(() => {
 		const storedUser = localStorage.getItem("user");
-		if (storedUser) {
+		const accessToken = localStorage.getItem("access");
+
+		if (storedUser && accessToken) {
 			try {
 				setUser(JSON.parse(storedUser));
+				setIsAuthenticated(true);
 			} catch (error: any) {
 				console.error("Failed to parse stored user:", error);
 				localStorage.removeItem("user");
+				localStorage.removeItem("access");
+				localStorage.removeItem("refresh");
 			}
 		}
 		setIsLoading(false);

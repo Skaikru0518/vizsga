@@ -18,43 +18,6 @@ import { useUser } from "@/hooks";
 import { useIsMobile } from "@/hooks";
 import { cn } from "@/lib/utils";
 
-function MenuItem({
-	href,
-	children,
-	onClick,
-	className,
-}: {
-	href?: string;
-	children: React.ReactNode;
-	onClick?: () => void;
-	className?: string;
-}) {
-	const content = (
-		<div
-			className={cn(
-				"flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-				className
-			)}
-		>
-			{children}
-		</div>
-	);
-
-	return (
-		<li>
-			<NavigationMenuLink asChild>
-				{href ? (
-					<Link href={href}>{content}</Link>
-				) : (
-					<button onClick={onClick} className="w-full text-left">
-						{content}
-					</button>
-				)}
-			</NavigationMenuLink>
-		</li>
-	);
-}
-
 export default function Navbar() {
 	const { user, logout } = useUser();
 	const isMobile = useIsMobile();
@@ -68,7 +31,7 @@ export default function Navbar() {
 	const closeMobileMenu = () => setMobileMenuOpen(false);
 
 	return (
-		<nav className="border-b bg-white shadow-sm">
+		<nav className="relative z-50 border-b bg-white shadow-sm">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex justify-between items-center h-16">
 					{/* Logo */}
@@ -120,7 +83,7 @@ export default function Navbar() {
 									<NavigationMenu viewport={false}>
 										<NavigationMenuList>
 											<NavigationMenuItem>
-												<NavigationMenuTrigger className="gap-2">
+												<NavigationMenuTrigger className="gap-2 hover:cursor-pointer">
 													<User className="w-4 h-4" />
 													{user.username}
 												</NavigationMenuTrigger>
@@ -150,7 +113,9 @@ export default function Navbar() {
 																<MenuItem href="/admin">
 																	<Shield className="w-4 h-4" />
 																	<div className="flex flex-col">
-																		<span className="font-medium">Admin Panel</span>
+																		<span className="font-medium">
+																			Admin Panel
+																		</span>
 																		<span className="text-xs text-muted-foreground">
 																			Manage users & books
 																		</span>
@@ -159,7 +124,10 @@ export default function Navbar() {
 															</>
 														)}
 														<li className="border-t my-1"></li>
-														<MenuItem onClick={handleLogout} className="text-red-600">
+														<MenuItem
+															onClick={handleLogout}
+															className="text-red-600 hover:cursor-pointer"
+														>
 															<LogOut className="w-4 h-4" />
 															<div className="flex flex-col">
 																<span className="font-medium">Logout</span>
@@ -206,7 +174,7 @@ export default function Navbar() {
 
 				{/* Mobile Menu */}
 				{isMobile && mobileMenuOpen && (
-					<div className="pb-4 space-y-2">
+					<div className="pb-4 space-y-2 animate-in slide-in-from-top fade-in duration-300">
 						<Button variant="ghost" asChild className="w-full justify-start">
 							<Link href="/" onClick={closeMobileMenu}>
 								Home
@@ -288,5 +256,42 @@ export default function Navbar() {
 				)}
 			</div>
 		</nav>
+	);
+}
+
+function MenuItem({
+	href,
+	children,
+	onClick,
+	className,
+}: {
+	href?: string;
+	children: React.ReactNode;
+	onClick?: () => void;
+	className?: string;
+}) {
+	const content = (
+		<div
+			className={cn(
+				"flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+				className
+			)}
+		>
+			{children}
+		</div>
+	);
+
+	return (
+		<li>
+			<NavigationMenuLink asChild>
+				{href ? (
+					<Link href={href}>{content}</Link>
+				) : (
+					<button onClick={onClick} className="w-full text-left">
+						{content}
+					</button>
+				)}
+			</NavigationMenuLink>
+		</li>
 	);
 }
