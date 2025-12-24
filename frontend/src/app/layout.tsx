@@ -4,6 +4,7 @@ import "./globals.css";
 import { Suspense } from "react";
 import LoadingPage from "./loading";
 import { AuthProvider } from "@/context/auth-context";
+import Navbar from "@/components/shared/navbar";
 
 const interSans = Inter({
 	variable: "--font-inter-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({
 			<body className={`${interSans.variable} antialiased`}>
 				<AuthProvider>
 					<Suspense fallback={<LoadingPage />}>
+						<Navbar />
 						{children}
 					</Suspense>
 				</AuthProvider>
