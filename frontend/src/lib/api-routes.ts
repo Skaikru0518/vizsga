@@ -19,10 +19,10 @@ interface AdminCreateBookDto extends CreateBookDto {
 export const authApi = {
 	// register
 	register: (data: RegisterDto) =>
-		api.post<RegisterResponse>("/register", data),
+		api.post<RegisterResponse>("/register/", data),
 
 	// login
-	login: (data: LoginDto) => api.post<LoginResponse>("/login", data),
+	login: (data: LoginDto) => api.post<LoginResponse>("/login/", data),
 };
 
 export const bookApi = {
