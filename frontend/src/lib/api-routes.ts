@@ -17,6 +17,17 @@ interface AdminCreateBookDto extends CreateBookDto {
 	user: number;
 }
 
+// Change password DTO
+interface ChangePasswordDto {
+	old_password: string;
+	new_password: string;
+}
+
+// Change password response
+interface ChangePasswordResponse {
+	message: string;
+}
+
 // Register
 export const authApi = {
 	// register
@@ -25,6 +36,10 @@ export const authApi = {
 
 	// login
 	login: (data: LoginDto) => api.post<LoginResponse>("/login/", data),
+
+	// change password
+	changePassword: (data: ChangePasswordDto) =>
+		api.post<ChangePasswordResponse>("/change-password/", data),
 };
 
 export const bookApi = {

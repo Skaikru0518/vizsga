@@ -1,13 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { FileQuestion } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-linear-to-br from-amber-50 via-stone-100 to-amber-100 p-4">
+		<div className="min-h-screen flex items-center justify-center page-bg p-4">
 			<Card className="max-w-md w-full bg-white border-stone-200">
 				<CardHeader className="text-center">
 					<div className="inline-block p-3 bg-amber-100 rounded-full mb-4 mx-auto">

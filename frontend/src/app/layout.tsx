@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 	title: "ReadList - Track Your Reading Journey",
 	description:
 		"A modern book tracking application to manage your reading list, mark books as read, and organize your personal library.",
+	icons: { icon: "/logo2.svg" },
 };
 
 export default function RootLayout({

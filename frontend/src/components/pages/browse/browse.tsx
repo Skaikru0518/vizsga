@@ -124,11 +124,13 @@ export default function BrowsePage() {
 	}, [books, searchQuery]);
 
 	return (
-		<div className="min-h-screen bg-linear-to-b from-amber-50 to-white">
+		<div className="min-h-screen page-bg">
 			{/* Header */}
 			<div className="hero-bg">
 				<div className="container mx-auto">
-					<h1 className="text-4xl md:text-5xl font-bold mb-3 text-amber-900">Browse Books</h1>
+					<h1 className="text-4xl md:text-5xl font-bold mb-3 text-amber-900">
+						Browse Books
+					</h1>
 					<p className="text-amber-700 text-lg">
 						Discover books by genre, author, or explore curated collections
 					</p>
@@ -150,19 +152,31 @@ export default function BrowsePage() {
 
 				<Tabs defaultValue="genre" className="w-full">
 					<TabsList className="tabs-amber grid w-full grid-cols-4 h-auto mb-8">
-						<TabsTrigger value="genre" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="genre"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<BookOpenCheck className="w-4 h-4 mr-2" />
 							By Genre
 						</TabsTrigger>
-						<TabsTrigger value="author" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="author"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<User className="w-4 h-4 mr-2" />
 							By Author
 						</TabsTrigger>
-						<TabsTrigger value="recent" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="recent"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<Calendar className="w-4 h-4 mr-2" />
 							Recently Added
 						</TabsTrigger>
-						<TabsTrigger value="collections" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="collections"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<Sparkles className="w-4 h-4 mr-2" />
 							Collections
 						</TabsTrigger>

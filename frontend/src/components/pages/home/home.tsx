@@ -31,7 +31,7 @@ import {
 
 type FilterCategory = "all" | "bought" | "read" | "onBookshelf";
 
-const ITEMS_PER_PAGE = 50;
+const ITEMS_PER_PAGE = 48;
 
 export default function HomePage() {
 	const [books, setBooks] = useState<Book[]>([]);
@@ -140,11 +140,14 @@ export default function HomePage() {
 	}, [books]);
 
 	return (
-		<div className="min-h-screen bg-linear-to-b from-amber-50 to-white">
+		<div className="min-h-screen page-bg">
 			{/* Hero Section */}
 			<div className="hero-bg">
-				<div className="container mx-auto">
-					<h1 className="text-4xl md:text-5xl font-bold mb-3 text-amber-900">ReadList</h1>
+				{/* Background logo */}
+				<div className="container mx-auto relative z-10">
+					<h1 className="text-4xl md:text-5xl font-bold mb-3 text-amber-900">
+						ReadList
+					</h1>
 					<p className="text-amber-700 text-lg mb-6">
 						Your personal book library
 					</p>
@@ -156,28 +159,36 @@ export default function HomePage() {
 								<Library className="w-5 h-5 text-amber-700" />
 								<span className="text-sm text-amber-600">Total Books</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">{stats.totalBooks}</div>
+							<div className="text-3xl font-bold text-amber-900">
+								{stats.totalBooks}
+							</div>
 						</div>
 						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
 							<div className="flex items-center gap-2 mb-1">
 								<Users className="w-5 h-5 text-amber-700" />
 								<span className="text-sm text-amber-600">Authors</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">{stats.uniqueAuthors}</div>
+							<div className="text-3xl font-bold text-amber-900">
+								{stats.uniqueAuthors}
+							</div>
 						</div>
 						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
 							<div className="flex items-center gap-2 mb-1">
 								<Tags className="w-5 h-5 text-amber-700" />
 								<span className="text-sm text-amber-600">Genres</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">{stats.uniqueGenres}</div>
+							<div className="text-3xl font-bold text-amber-900">
+								{stats.uniqueGenres}
+							</div>
 						</div>
 						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
 							<div className="flex items-center gap-2 mb-1">
 								<Clock className="w-5 h-5 text-amber-700" />
 								<span className="text-sm text-amber-600">Recently Added</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">{stats.recentlyAdded}</div>
+							<div className="text-3xl font-bold text-amber-900">
+								{stats.recentlyAdded}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -207,7 +218,10 @@ export default function HomePage() {
 							<Library className="w-4 h-4 mr-2" />
 							All
 						</TabsTrigger>
-						<TabsTrigger value="bought" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="bought"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<ShoppingCart className="w-4 h-4 mr-2" />
 							Bought
 						</TabsTrigger>
@@ -215,7 +229,10 @@ export default function HomePage() {
 							<CheckCircle2 className="w-4 h-4 mr-2" />
 							Read
 						</TabsTrigger>
-						<TabsTrigger value="onBookshelf" className="tab-amber py-3 cursor-pointer">
+						<TabsTrigger
+							value="onBookshelf"
+							className="tab-amber py-3 cursor-pointer"
+						>
 							<BookOpen className="w-4 h-4 mr-2" />
 							On shelf
 						</TabsTrigger>
@@ -248,7 +265,9 @@ export default function HomePage() {
 									<PaginationContent>
 										<PaginationItem>
 											<PaginationPrevious
-												onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+												onClick={() =>
+													setCurrentPage((p) => Math.max(1, p - 1))
+												}
 												aria-disabled={currentPage === 1}
 												className={
 													currentPage === 1

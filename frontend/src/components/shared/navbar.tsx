@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, LogOut, User, BookMarked, Shield } from "lucide-react";
+import { Menu, X, LogOut, User, BookMarked, Shield, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	NavigationMenu,
@@ -17,6 +17,7 @@ import { Logo } from "./logo";
 import { useUser } from "@/hooks";
 import { useIsMobile } from "@/hooks";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function Navbar() {
 	const { user, logout } = useUser();
@@ -39,7 +40,13 @@ export default function Navbar() {
 						href="/"
 						className="flex items-center gap-2 hover:opacity-80 transition-opacity"
 					>
-						<Logo className="w-8 h-8" />
+						<Image
+							src={"/logo2.svg"}
+							width={10}
+							height={10}
+							alt="Logo"
+							className="h-10 w-10"
+						/>
 						<span className="text-xl font-bold text-amber-800">ReadList</span>
 					</Link>
 
@@ -79,6 +86,17 @@ export default function Navbar() {
 
 							{/* Desktop Auth Section */}
 							<div className="flex items-center gap-3">
+								{user && (
+									<Button
+										asChild
+										className="bg-amber-600 hover:bg-amber-700 text-white"
+									>
+										<Link href="/book/upload">
+											<Plus className="w-4 h-4 mr-2" />
+											Add Book
+										</Link>
+									</Button>
+								)}
 								{user ? (
 									<NavigationMenu viewport={false}>
 										<NavigationMenuList>
@@ -186,11 +204,26 @@ export default function Navbar() {
 							</Link>
 						</Button>
 						{user && (
-							<Button variant="ghost" asChild className="w-full justify-start">
-								<Link href="/my-books" onClick={closeMobileMenu}>
-									My Books
-								</Link>
-							</Button>
+							<>
+								<Button
+									variant="ghost"
+									asChild
+									className="w-full justify-start"
+								>
+									<Link href="/my-books" onClick={closeMobileMenu}>
+										My Books
+									</Link>
+								</Button>
+								<Button
+									asChild
+									className="w-full bg-amber-600 hover:bg-amber-700 text-white"
+								>
+									<Link href="/book/upload" onClick={closeMobileMenu}>
+										<Plus className="w-4 h-4 mr-2" />
+										Add Book
+									</Link>
+								</Button>
+							</>
 						)}
 
 						{user ? (

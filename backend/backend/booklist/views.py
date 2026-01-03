@@ -64,6 +64,17 @@ def login(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
+    # Check if user exists and is inactive before authenticating
+    try:
+        user_obj = User.objects.get(username=username)
+        if not user_obj.is_active:
+            return Response(
+                {"error": "Account deactivated, please contact administrators"},
+                status=status.HTTP_403_FORBIDDEN
+            )
+    except User.DoesNotExist:
+        pass  # User doesn't exist, will be caught by authenticate()
+
     user = authenticate(username=username, password=password)
 
     if user is not None:
@@ -104,6 +115,75 @@ def register(request):
         user.save()
         return Response(serialized.data, status=status.HTTP_201_CREATED)
     return Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@extend_schema(
+    request={
+        "application/json": {
+            "type": "object",
+            "properties": {
+                "old_password": {"type": "string"},
+                "new_password": {"type": "string"}
+            },
+            "required": ["old_password", "new_password"]
+        }
+    },
+    responses={
+        200: {
+            "type": "object",
+            "properties": {
+                "message": {"type": "string"}
+            }
+        },
+        400: {
+            "type": "object",
+            "properties": {
+                "error": {"type": "string"}
+            }
+        }
+    },
+    description="Change password for authenticated user",
+    tags=["Authentication"]
+)
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    """
+    Change password for the authenticated user
+
+    Required fields: old_password, new_password
+    """
+    old_password = request.data.get('old_password')
+    new_password = request.data.get('new_password')
+
+    if not old_password or not new_password:
+        return Response(
+            {"error": "Both old_password and new_password are required"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Verify old password
+    if not request.user.check_password(old_password):
+        return Response(
+            {"error": "Old password is incorrect"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Validate new password length
+    if len(new_password) < 8:
+        return Response(
+            {"error": "New password must be at least 8 characters long"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Set new password
+    request.user.set_password(new_password)
+    request.user.save()
+
+    return Response(
+        {"message": "Password changed successfully"},
+        status=status.HTTP_200_OK
+    )
 
 
 # ============== BOOKS ==============

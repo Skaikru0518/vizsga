@@ -3,6 +3,7 @@ import { Book } from "@/interface";
 import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { getBookCoverUrl } from "@/lib/utils/book-cover";
 
 interface BookCardProps {
 	book: Book;
@@ -10,6 +11,8 @@ interface BookCardProps {
 
 export default function BookCard({ book }: BookCardProps) {
 	const router = useRouter();
+	const coverUrl = getBookCoverUrl(book);
+
 	return (
 		<div
 			className="group relative bg-white rounded-lg p-3 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 shadow-lg"
@@ -20,13 +23,14 @@ export default function BookCard({ book }: BookCardProps) {
 
 			{/* Book Cover */}
 			<div className="relative h-72 w-full bg-stone-50 rounded overflow-hidden mb-3">
-				{book.coverUrl ? (
+				{coverUrl ? (
 					<Image
-						src={book.coverUrl}
+						src={coverUrl}
 						fill
 						alt={book.title}
 						className="object-contain"
 						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+						unoptimized={coverUrl.includes('localhost') || coverUrl.includes('127.0.0.1')}
 					/>
 				) : (
 					<div className="w-full h-full flex items-center justify-center bg-linear-to-br from-amber-100 to-stone-200">

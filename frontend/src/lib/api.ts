@@ -2,7 +2,7 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 
 const api = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000/api",
-	timeout: 10000,
+	timeout: 60000, // 60 seconds for file uploads
 	headers: {
 		"Content-Type": "application/json",
 	},
@@ -34,6 +34,12 @@ api.interceptors.request.use(
 
 		if (token && config.headers) {
 			config.headers.Authorization = `Bearer ${token}`;
+		}
+
+		// If the data is FormData, remove the Content-Type header
+		// so axios can set it automatically with the correct boundary
+		if (config.data instanceof FormData && config.headers) {
+			delete config.headers["Content-Type"];
 		}
 
 		return config;

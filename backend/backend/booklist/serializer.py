@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
-        read_only_fields = ['id', 'is_staff', 'is_superuser', 'is_active', 'date_joined']
+        read_only_fields = ['id', 'date_joined']
 
 
 class UserBookSerializer(serializers.ModelSerializer):
@@ -19,6 +19,12 @@ class UserBookSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_mark = serializers.SerializerMethodField()
+
+    # Make fields explicitly optional/required to handle both JSON and FormData
+    isbn = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    genre = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    cover = serializers.ImageField(required=False, allow_null=True)
+    coverUrl = serializers.URLField(required=False, allow_blank=True, allow_null=True)
 
     class Meta:
         model = Book

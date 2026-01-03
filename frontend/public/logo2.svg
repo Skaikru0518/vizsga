@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle with soft cream fill -->
+  <circle cx="100" cy="100" r="95" fill="#FFF8E7" stroke="#D4A574" stroke-width="3"/>
+
+  <!-- Book stack (shifted upward) -->
+  <g>
+    <!-- Bottom book -->
+    <rect x="50" y="102" width="100" height="18" rx="2" fill="#E8B86D" stroke="#D4A574" stroke-width="2"/>
+    <line x1="55" y1="102" x2="55" y2="120" stroke="#D4A574" stroke-width="1.5"/>
+
+    <!-- Middle book -->
+    <rect x="55" y="82" width="90" height="18" rx="2" fill="#F5D9A8" stroke="#D4A574" stroke-width="2"/>
+    <line x1="60" y1="82" x2="60" y2="100" stroke="#D4A574" stroke-width="1.5"/>
+
+    <!-- Top book (open) -->
+    <path d="M 65 67 L 65 82 L 100 77 L 135 82 L 135 67 L 100 62 Z"
+          fill="#FFEFC7" stroke="#D4A574" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="100" y1="62" x2="100" y2="77" stroke="#D4A574" stroke-width="2"/>
+
+    <!-- Pages detail on open book -->
+    <line x1="75" y1="70" x2="95" y2="67" stroke="#D4A574" stroke-width="1" opacity="0.5"/>
+    <line x1="75" y1="74" x2="95" y2="71" stroke="#D4A574" stroke-width="1" opacity="0.5"/>
+    <line x1="105" y1="67" x2="125" y2="70" stroke="#D4A574" stroke-width="1" opacity="0.5"/>
+    <line x1="105" y1="71" x2="125" y2="74" stroke="#D4A574" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Checkmark icon -->
+  <circle cx="155" cy="60" r="12" fill="#E8B86D" stroke="#D4A574" stroke-width="1.5"/>
+  <path d="M 150 60 L 153 63 L 160 56"
+        fill="none" stroke="#FFF8E7" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Text: ReadList (moved up) -->
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="32"
+        font-weight="bold" fill="#C89850" text-anchor="middle">
+    ReadList
+  </text>
+</svg>

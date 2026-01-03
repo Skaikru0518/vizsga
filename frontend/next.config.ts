@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
 				hostname: "epub.us",
 				pathname: "/**",
 			},
+			{
+				protocol: "http",
+				hostname: "localhost",
+				port: "8000",
+				pathname: "/media/**",
+			},
 		],
 	},
 };

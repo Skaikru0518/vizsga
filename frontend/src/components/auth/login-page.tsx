@@ -13,7 +13,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { FormEvent, useState, useEffect } from "react";
-import { BookOpen, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -26,7 +27,7 @@ export default function LoginPage() {
 
 	useEffect(() => {
 		if (isAuthenticated && user) {
-			router.push("/dashboard");
+			router.push("/");
 		}
 	}, [isAuthenticated, user, router]);
 
@@ -44,10 +45,15 @@ export default function LoginPage() {
 
 		try {
 			await login({ username, password });
-			router.push("/dashboard");
+			router.push("/");
 		} catch (err: any) {
-			if (err.response?.status === 401) {
+			// Check for inactive account (403 status)
+			if (err.response?.status === 403 && err.response?.data?.error) {
+				setError(err.response.data.error);
+			} else if (err.response?.status === 401) {
 				setError("Invalid username or password");
+			} else if (err.response?.data?.error) {
+				setError(err.response.data.error);
 			} else if (err.response?.data?.detail) {
 				setError(err.response.data.detail);
 			} else {
@@ -63,9 +69,13 @@ export default function LoginPage() {
 			<div className="w-full max-w-lg px-6">
 				<Card className="bg-white border-stone-200">
 					<CardHeader className="text-center">
-						<div className="inline-block p-3 bg-amber-100 rounded-full mb-4 mx-auto">
-							<BookOpen className="w-8 h-8 text-amber-700" />
-						</div>
+						<Image
+							src="/logo2.svg"
+							alt="ReadList Logo"
+							width={80}
+							height={80}
+							className="mx-auto mb-4"
+						/>
 						<CardTitle className="text-3xl text-stone-800">
 							Welcome to ReadList
 						</CardTitle>

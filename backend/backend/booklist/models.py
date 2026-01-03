@@ -1,8 +1,21 @@
 from django.db import models
-
 from django.conf import settings
+import os
+from cuid import cuid
 
 # Create your models here.
+
+def book_cover_upload_path(instance, filename):
+    """
+    Generate a unique filename for uploaded book covers using CUID
+    Format: images/cuid.ext
+    """
+    # Get the file extension
+    ext = os.path.splitext(filename)[1]
+    # Generate unique filename with CUID
+    unique_filename = f"{cuid()}{ext}"
+    return os.path.join('images', unique_filename)
+
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
@@ -10,7 +23,7 @@ class Book(models.Model):
     description = models.TextField()
     isbn = models.CharField(max_length=13, blank=True, null=True)
     genre = models.CharField(max_length=50, blank=True, null=True)
-    cover = models.ImageField(upload_to="images/", null=True, blank=True)
+    cover = models.ImageField(upload_to=book_cover_upload_path, null=True, blank=True)
     coverUrl = models.URLField(max_length=500, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='uploaded_books')
 

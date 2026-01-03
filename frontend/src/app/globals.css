@@ -164,7 +164,7 @@
 	}
 
 	.tab-amber {
-		@apply data-[state=active]:bg-amber-600! data-[state=active]:text-white! data-[state=inactive]:text-amber-800! hover:bg-amber-200/50! transition-colors!;
+		@apply data-[state=active]:bg-amber-600! data-[state=active]:text-white! data-[state=inactive]:text-amber-800! hover:bg-amber-200/50! hover:cursor-pointer! transition-colors!;
 	}
 
 	/* Amber-themed Pagination */
@@ -174,5 +174,9 @@
 
 	.pagination-amber a:not([data-active="true"]) {
 		@apply text-amber-800! hover:bg-amber-100! hover:text-amber-900!;
+	}
+
+	.page-bg {
+		@apply bg-linear-to-b from-amber-50 to-white;
 	}
 }

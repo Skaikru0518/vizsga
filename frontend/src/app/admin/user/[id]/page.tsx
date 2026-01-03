@@ -1,26 +1,31 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useUser } from "@/hooks/use-user";
-import { adminApi, authApi, bookApi } from "@/lib/api-routes";
+import { adminApi } from "@/lib/api-routes";
 import { User, Book } from "@/interface";
 import { Button } from "@/components/ui/button";
-import { UserCircle, ArrowLeft } from "lucide-react";
+import { Shield, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import {
 	UserDetailsCard,
 	UserBooksTable,
 	EditBookDialog,
+	DeleteUserDialog,
 	DeleteBookDialog,
 } from "@/components/admin";
 
-export default function ProfilePage() {
+export default function AdminUserDetailsPage() {
 	const router = useRouter();
-	const { user, isAuthenticated } = useUser();
+	const params = useParams();
+	const userId = parseInt(params.id as string);
+	const { user: currentUser, isAuthenticated } = useUser();
+	const [user, setUser] = useState<User | null>(null);
 	const [userBooks, setUserBooks] = useState<Book[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [isEditingUser, setIsEditingUser] = useState(false);
 	const [editedUser, setEditedUser] = useState<Partial<User>>({});
+	const [deleteUserDialogOpen, setDeleteUserDialogOpen] = useState(false);
 	const [deleteBookId, setDeleteBookId] = useState<number | null>(null);
 	const [editBookDialogOpen, setEditBookDialogOpen] = useState(false);
 	const [editingBook, setEditingBook] = useState<Book | null>(null);
@@ -30,30 +35,45 @@ export default function ProfilePage() {
 	const [coverUrl, setCoverUrl] = useState("");
 
 	useEffect(() => {
-		if (isAuthenticated === false) {
-			toast.error("Please login to view your profile");
-			router.push("/login");
+		// Check if current user is admin
+		if (
+			isAuthenticated === false ||
+			(currentUser && !currentUser.is_superuser)
+		) {
+			toast.error("Access denied. Admin privileges required.");
+			router.push("/");
 			return;
 		}
 
-		if (user) {
-			setEditedUser(user);
-			fetchUserBooks();
+		if (currentUser?.is_superuser) {
+			fetchUserData();
 		}
-	}, [isAuthenticated, user, router]);
+	}, [isAuthenticated, currentUser, router, userId]);
 
-	const fetchUserBooks = async () => {
-		if (!user) return;
-
+	const fetchUserData = async () => {
 		try {
-			const booksResponse = await bookApi.getAll();
+			// Fetch all users and find the specific one
+			const usersResponse = await adminApi.users.getAll();
+			const foundUser = usersResponse.data.find((u) => u.id === userId);
+
+			if (!foundUser) {
+				toast.error("User not found");
+				router.push("/admin");
+				return;
+			}
+
+			setUser(foundUser);
+			setEditedUser(foundUser);
+
+			// Fetch all books and filter by user
+			const booksResponse = await adminApi.books.getAll();
 			const userBooksFiltered = booksResponse.data.filter(
-				(book) => book.user.id === user.id
+				(book) => book.user.id === userId
 			);
 			setUserBooks(userBooksFiltered);
 		} catch (error) {
-			console.error("Failed to fetch user books:", error);
-			toast.error("Failed to load your books");
+			console.error("Failed to fetch user data:", error);
+			toast.error("Failed to load user data");
 		} finally {
 			setLoading(false);
 		}
@@ -68,36 +88,31 @@ export default function ProfilePage() {
 				email: editedUser.email,
 				first_name: editedUser.first_name,
 				last_name: editedUser.last_name,
+				is_active: editedUser.is_active,
+				is_staff: editedUser.is_staff,
+				is_superuser: editedUser.is_superuser,
 			};
 
 			await adminApi.users.update(user.id, updateData);
-			toast.success("Profile updated successfully");
+			toast.success("User updated successfully");
 			setIsEditingUser(false);
-			// Reload user data
-			window.location.reload();
+			fetchUserData();
 		} catch (error) {
-			console.error("Failed to update profile:", error);
-			toast.error("Failed to update profile");
+			console.error("Failed to update user:", error);
+			toast.error("Failed to update user");
 		}
 	};
 
-	const handlePasswordChange = async (
-		oldPassword: string,
-		newPassword: string
-	) => {
+	const handleDeleteUser = async () => {
 		if (!user) return;
 
 		try {
-			await authApi.changePassword({
-				old_password: oldPassword,
-				new_password: newPassword,
-			});
-			toast.success("Password changed successfully");
-		} catch (error: any) {
-			console.error("Failed to change password:", error);
-			const errorMessage =
-				error.response?.data?.error || "Failed to change password";
-			toast.error(errorMessage);
+			await adminApi.users.delete(user.id);
+			toast.success("User deleted successfully");
+			router.push("/admin");
+		} catch (error) {
+			console.error("Failed to delete user:", error);
+			toast.error("Failed to delete user");
 		}
 	};
 
@@ -106,7 +121,7 @@ export default function ProfilePage() {
 			await adminApi.books.delete(bookId);
 			toast.success("Book deleted successfully");
 			setDeleteBookId(null);
-			fetchUserBooks();
+			fetchUserData();
 		} catch (error) {
 			console.error("Failed to delete book:", error);
 			toast.error("Failed to delete book");
@@ -132,6 +147,7 @@ export default function ProfilePage() {
 		if (!editingBook) return;
 
 		try {
+			// Check if we're uploading a new file
 			if (coverType === "file" && coverFile) {
 				const formData = new FormData();
 				formData.append("title", editedBookData.title || "");
@@ -144,6 +160,7 @@ export default function ProfilePage() {
 
 				await adminApi.books.update(editingBook.id, formData as any);
 			} else {
+				// Update with URL or no cover change
 				const updateData: any = {
 					title: editedBookData.title,
 					author: editedBookData.author,
@@ -162,7 +179,7 @@ export default function ProfilePage() {
 			toast.success("Book updated successfully");
 			setEditBookDialogOpen(false);
 			setEditingBook(null);
-			fetchUserBooks();
+			fetchUserData();
 		} catch (error) {
 			console.error("Failed to update book:", error);
 			toast.error("Failed to update book");
@@ -174,7 +191,7 @@ export default function ProfilePage() {
 		setEditedUser(user || {});
 	};
 
-	if (loading || !user) {
+	if (loading || !currentUser) {
 		return (
 			<div className="min-h-screen flex items-center justify-center">
 				<div className="text-center">
@@ -185,17 +202,23 @@ export default function ProfilePage() {
 		);
 	}
 
+	if (!currentUser.is_superuser || !user) {
+		return null;
+	}
+
 	return (
 		<div className="min-h-screen page-bg">
 			{/* Hero Section */}
 			<div className="hero-bg">
 				<div className="container mx-auto">
 					<div className="flex items-center gap-3">
-						<UserCircle className="w-8 h-8 text-amber-600" />
-						<h1 className="text-4xl font-bold text-stone-800">My Profile</h1>
+						<Shield className="w-8 h-8 text-amber-600" />
+						<h1 className="text-4xl font-bold text-stone-800">
+							User Management
+						</h1>
 					</div>
 					<p className="text-stone-600 mt-2">
-						Manage your account and uploaded books
+						Manage user details and their uploaded books
 					</p>
 					<Button
 						variant="ghost"
@@ -217,13 +240,10 @@ export default function ProfilePage() {
 					onEdit={() => setIsEditingUser(true)}
 					onSave={handleUpdateUser}
 					onCancel={cancelEditingUser}
+					onDelete={() => setDeleteUserDialogOpen(true)}
 					onUserChange={(updates) =>
 						setEditedUser({ ...editedUser, ...updates })
 					}
-					showAdminFields={false}
-					showDeleteButton={false}
-					showPasswordChange={true}
-					onPasswordChange={handlePasswordChange}
 				/>
 
 				<UserBooksTable
@@ -246,6 +266,13 @@ export default function ProfilePage() {
 				onCoverUrlChange={setCoverUrl}
 				onCoverFileChange={setCoverFile}
 				onSave={handleUpdateBook}
+			/>
+
+			<DeleteUserDialog
+				open={deleteUserDialogOpen}
+				onOpenChange={setDeleteUserDialogOpen}
+				username={user?.username || ""}
+				onConfirm={handleDeleteUser}
 			/>
 
 			<DeleteBookDialog
