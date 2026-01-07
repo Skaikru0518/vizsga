@@ -5,6 +5,7 @@ A modern web application for managing your personal book collection. Track books
 ## Tech Stack
 
 ### Frontend
+
 - **Next.js 16** - React framework with App Router
 - **TypeScript** - Type-safe JavaScript
 - **Tailwind CSS 4** - Utility-first CSS framework
@@ -12,6 +13,7 @@ A modern web application for managing your personal book collection. Track books
 - **Axios** - HTTP client for API requests
 
 ### Backend
+
 - **Django 6.0** - Python web framework
 - **Django REST Framework** - Powerful toolkit for building Web APIs
 - **Simple JWT** - JWT authentication for Django
@@ -41,12 +43,14 @@ cd ikt
 #### Create and Activate Virtual Environment
 
 **Windows:**
+
 ```bash
 python -m venv myvenv
 myvenv\Scripts\activate
 ```
 
 **macOS/Linux:**
+
 ```bash
 python3 -m venv myvenv
 source myvenv/bin/activate
@@ -136,11 +140,12 @@ The frontend will run at `http://localhost:3000`
 - **Frontend:** http://localhost:3000
 - **Backend API:** http://localhost:8000
 - **Django Admin:** http://localhost:8000/admin
-- **API Documentation:** http://localhost:8000/api/schema/swagger-ui/
+- **API Documentation:** http://localhost:8000/api/docs
 
 ## Features
 
 ### User Features
+
 - User registration and authentication (JWT)
 - Browse all books in the database
 - Mark books as read, bought, or on bookshelf
@@ -151,6 +156,7 @@ The frontend will run at `http://localhost:3000`
 - User profile management
 
 ### Admin Features
+
 - User management (activate/deactivate, staff/superuser permissions)
 - Book management (CRUD operations)
 - View all users and their uploaded books
@@ -191,11 +197,13 @@ ikt/
 ## API Endpoints
 
 ### Authentication
+
 - `POST /api/login/` - User login
 - `POST /api/register/` - User registration
 - `POST /api/change-password/` - Change password
 
 ### Books
+
 - `GET /api/books/` - List all books
 - `POST /api/books/` - Create a new book (authenticated)
 - `GET /api/books/{id}/` - Get book details
@@ -203,15 +211,18 @@ ikt/
 - `DELETE /api/books/{id}/` - Delete book (owner only)
 
 ### Book Marks
+
 - `POST /api/books/{id}/mark/` - Mark a book
 - `PATCH /api/books/{id}/mark/` - Update mark
 - `DELETE /api/books/{id}/mark/` - Remove mark
 
 ### User Profile
+
 - `GET /api/profile/` - Get user profile
 - `PATCH /api/profile/` - Update user profile
 
 ### Admin (Superuser only)
+
 - `GET /api/admin/users/` - List all users
 - `PATCH /api/admin/users/{id}/` - Update user
 - `DELETE /api/admin/users/{id}/` - Delete user
@@ -222,11 +233,13 @@ ikt/
 ## Development Tips
 
 ### Backend
+
 - Use `python manage.py shell` for interactive Python shell
 - Run `python manage.py makemigrations` after model changes
 - Check API documentation at `/api/schema/swagger-ui/`
 
 ### Frontend
+
 - Run `pnpm lint` to check code quality
 - Use `pnpm build` to test production build
 - Frontend uses controlled components with form validation
@@ -236,6 +249,7 @@ ikt/
 ### Backend Issues
 
 **Database locked error:**
+
 ```bash
 # Delete db.sqlite3 and re-run migrations
 rm db.sqlite3
@@ -244,20 +258,24 @@ python manage.py createsuperuser
 ```
 
 **CORS errors:**
+
 - Verify `CORS_ALLOWED_ORIGINS` in backend `.env`
 - Check frontend URL matches exactly (no trailing slash)
 
 **Media files not loading:**
+
 - Ensure `media/images/` directory exists
 - Check `MEDIA_URL` and `MEDIA_ROOT` in settings.py
 
 ### Frontend Issues
 
 **API connection failed:**
+
 - Verify `NEXT_PUBLIC_API_URL` in `.env.local`
 - Ensure backend server is running
 
 **pnpm not found:**
+
 ```bash
 npm install -g pnpm
 ```
