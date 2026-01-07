@@ -236,7 +236,7 @@ ikt/
 
 - Use `python manage.py shell` for interactive Python shell
 - Run `python manage.py makemigrations` after model changes
-- Check API documentation at `/api/schema/swagger-ui/`
+- Check API documentation at `/api/docs`
 
 ### Frontend
 
