@@ -145,48 +145,48 @@ export default function HomePage() {
 			<div className="hero-bg">
 				{/* Background logo */}
 				<div className="container mx-auto relative z-10">
-					<h1 className="text-4xl md:text-5xl font-bold mb-3 text-amber-900">
+					<h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-3 text-amber-900">
 						ReadList
 					</h1>
-					<p className="text-amber-700 text-lg mb-6">
+					<p className="text-amber-700 text-sm md:text-lg mb-4 md:mb-6">
 						Your personal book library
 					</p>
 
 					{/* Stats */}
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
-							<div className="flex items-center gap-2 mb-1">
-								<Library className="w-5 h-5 text-amber-700" />
-								<span className="text-sm text-amber-600">Total Books</span>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8">
+						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 md:p-4 shadow-sm border border-amber-200/50">
+							<div className="flex items-center gap-1.5 md:gap-2 mb-1">
+								<Library className="w-4 h-4 md:w-5 md:h-5 text-amber-700" />
+								<span className="text-xs md:text-sm text-amber-600">Total Books</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">
+							<div className="text-2xl md:text-3xl font-bold text-amber-900">
 								{stats.totalBooks}
 							</div>
 						</div>
-						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
-							<div className="flex items-center gap-2 mb-1">
-								<Users className="w-5 h-5 text-amber-700" />
-								<span className="text-sm text-amber-600">Authors</span>
+						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 md:p-4 shadow-sm border border-amber-200/50">
+							<div className="flex items-center gap-1.5 md:gap-2 mb-1">
+								<Users className="w-4 h-4 md:w-5 md:h-5 text-amber-700" />
+								<span className="text-xs md:text-sm text-amber-600">Authors</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">
+							<div className="text-2xl md:text-3xl font-bold text-amber-900">
 								{stats.uniqueAuthors}
 							</div>
 						</div>
-						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
-							<div className="flex items-center gap-2 mb-1">
-								<Tags className="w-5 h-5 text-amber-700" />
-								<span className="text-sm text-amber-600">Genres</span>
+						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 md:p-4 shadow-sm border border-amber-200/50">
+							<div className="flex items-center gap-1.5 md:gap-2 mb-1">
+								<Tags className="w-4 h-4 md:w-5 md:h-5 text-amber-700" />
+								<span className="text-xs md:text-sm text-amber-600">Genres</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">
+							<div className="text-2xl md:text-3xl font-bold text-amber-900">
 								{stats.uniqueGenres}
 							</div>
 						</div>
-						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-amber-200/50">
-							<div className="flex items-center gap-2 mb-1">
-								<Clock className="w-5 h-5 text-amber-700" />
-								<span className="text-sm text-amber-600">Recently Added</span>
+						<div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 md:p-4 shadow-sm border border-amber-200/50">
+							<div className="flex items-center gap-1.5 md:gap-2 mb-1">
+								<Clock className="w-4 h-4 md:w-5 md:h-5 text-amber-700" />
+								<span className="text-xs md:text-sm text-amber-600">Recently Added</span>
 							</div>
-							<div className="text-3xl font-bold text-amber-900">
+							<div className="text-2xl md:text-3xl font-bold text-amber-900">
 								{stats.recentlyAdded}
 							</div>
 						</div>
@@ -196,14 +196,14 @@ export default function HomePage() {
 
 			<div className="container mx-auto px-4 pb-12">
 				{/* Search Bar */}
-				<div className="mb-6 relative">
-					<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+				<div className="mb-4 md:mb-6 relative">
+					<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-stone-400" />
 					<Input
 						type="text"
 						placeholder="Search by title or author..."
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
-						className="pl-10 h-12 text-base"
+						className="pl-9 md:pl-10 h-10 md:h-12 text-sm md:text-base"
 					/>
 				</div>
 
@@ -211,12 +211,13 @@ export default function HomePage() {
 				<Tabs
 					value={activeCategory}
 					onValueChange={(value) => setActiveCategory(value as FilterCategory)}
-					className="mb-8"
+					className="mb-6 md:mb-8"
 				>
-					<TabsList className="tabs-amber grid w-full grid-cols-4 h-auto">
+					<TabsList className="tabs-amber grid w-full grid-cols-2 md:grid-cols-4 h-auto gap-2">
 						<TabsTrigger value="all" className="tab-amber py-3 cursor-pointer">
 							<Library className="w-4 h-4 mr-2" />
-							All
+							<span className="hidden sm:inline">All Books</span>
+							<span className="sm:hidden">All</span>
 						</TabsTrigger>
 						<TabsTrigger
 							value="bought"
@@ -234,13 +235,14 @@ export default function HomePage() {
 							className="tab-amber py-3 cursor-pointer"
 						>
 							<BookOpen className="w-4 h-4 mr-2" />
-							On shelf
+							<span className="hidden sm:inline">On Shelf</span>
+							<span className="sm:hidden">Shelf</span>
 						</TabsTrigger>
 					</TabsList>
 				</Tabs>
 
 				{/* Results count */}
-				<div className="mb-4 text-sm text-stone-600">
+				<div className="mb-3 md:mb-4 text-xs md:text-sm text-stone-600">
 					{filteredBooks.length} books found
 					{totalPages > 1 && (
 						<span className="ml-2">
@@ -252,7 +254,7 @@ export default function HomePage() {
 				{/* Books Grid */}
 				{filteredBooks.length > 0 ? (
 					<>
-						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
 							{paginatedBooks.map((book) => (
 								<BookCard key={book.id} book={book} />
 							))}
@@ -260,9 +262,9 @@ export default function HomePage() {
 
 						{/* Pagination */}
 						{totalPages > 1 && (
-							<div className="mt-8">
+							<div className="mt-6 md:mt-8">
 								<Pagination className="pagination-amber">
-									<PaginationContent>
+									<PaginationContent className="gap-1 md:gap-2">
 										<PaginationItem>
 											<PaginationPrevious
 												onClick={() =>
@@ -271,8 +273,8 @@ export default function HomePage() {
 												aria-disabled={currentPage === 1}
 												className={
 													currentPage === 1
-														? "pointer-events-none opacity-50"
-														: "cursor-pointer"
+														? "pointer-events-none opacity-50 h-8 md:h-10 px-2 md:px-4 text-xs md:text-sm"
+														: "cursor-pointer h-8 md:h-10 px-2 md:px-4 text-xs md:text-sm"
 												}
 											/>
 										</PaginationItem>
@@ -280,14 +282,14 @@ export default function HomePage() {
 										{getPageNumbers().map((page, index) =>
 											page === "ellipsis" ? (
 												<PaginationItem key={`ellipsis-${index}`}>
-													<PaginationEllipsis />
+													<PaginationEllipsis className="h-8 md:h-10 w-8 md:w-10" />
 												</PaginationItem>
 											) : (
 												<PaginationItem key={page}>
 													<PaginationLink
 														onClick={() => setCurrentPage(page)}
 														isActive={currentPage === page}
-														className="cursor-pointer"
+														className="cursor-pointer h-8 md:h-10 w-8 md:w-10 text-xs md:text-sm"
 													>
 														{page}
 													</PaginationLink>
@@ -303,8 +305,8 @@ export default function HomePage() {
 												aria-disabled={currentPage === totalPages}
 												className={
 													currentPage === totalPages
-														? "pointer-events-none opacity-50"
-														: "cursor-pointer"
+														? "pointer-events-none opacity-50 h-8 md:h-10 px-2 md:px-4 text-xs md:text-sm"
+														: "cursor-pointer h-8 md:h-10 px-2 md:px-4 text-xs md:text-sm"
 												}
 											/>
 										</PaginationItem>
@@ -314,20 +316,20 @@ export default function HomePage() {
 						)}
 					</>
 				) : (
-					<div className="text-center py-16">
+					<div className="text-center py-12 md:py-16">
 						{!isAuthenticated && activeCategory !== "all" ? (
 							<>
-								<LogIn className="w-16 h-16 text-amber-400 mx-auto mb-4" />
-								<h3 className="text-2xl font-semibold text-stone-800 mb-2">
+								<LogIn className="w-12 h-12 md:w-16 md:h-16 text-amber-400 mx-auto mb-3 md:mb-4" />
+								<h3 className="text-xl md:text-2xl font-semibold text-stone-800 mb-2">
 									Join now to track your books
 								</h3>
-								<p className="text-stone-500 text-lg mb-6">
+								<p className="text-stone-500 text-sm md:text-lg mb-4 md:mb-6">
 									Sign in to mark books as bought, read, or add them to your
 									shelf
 								</p>
 								<Button
 									onClick={() => router.push("/login")}
-									className="btn-primary"
+									className="btn-primary h-10 md:h-11 text-sm md:text-base"
 								>
 									<LogIn className="w-4 h-4 mr-2" />
 									Sign In
@@ -335,8 +337,8 @@ export default function HomePage() {
 							</>
 						) : (
 							<>
-								<BookOpen className="w-16 h-16 text-stone-300 mx-auto mb-4" />
-								<p className="text-stone-500 text-lg">
+								<BookOpen className="w-12 h-12 md:w-16 md:h-16 text-stone-300 mx-auto mb-3 md:mb-4" />
+								<p className="text-stone-500 text-base md:text-lg">
 									{searchQuery
 										? "No results found"
 										: "No books in this category yet"}
