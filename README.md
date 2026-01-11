@@ -79,9 +79,11 @@ Follow the prompts to create an admin account.
 
 #### Create Media Directory
 
+The media directory is located in `backend/booklist/media` and should already exist. If not, create it:
+
 ```bash
-mkdir media
-mkdir media/images
+cd backend
+mkdir -p booklist/media/images
 ```
 
 ### 3. Frontend Setup (Next.js)
@@ -93,24 +95,17 @@ pnpm install
 
 ### 4. Environment Variables
 
-#### Backend (.env)
+#### Frontend (.env)
 
-Create a `.env` file in the `backend/backend` directory:
-
-```env
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:3000
-```
-
-#### Frontend (.env.local)
-
-Create a `.env.local` file in the `frontend` directory:
+Create a `.env` file in the `frontend` directory:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NODE_ENV="development"
+NEXT_PUBLIC_BACKEND_URL="http://localhost:8000/api"
+NEXT_PUBLIC_API_URL="http://localhost:8000"
 ```
+
+**Note:** Backend environment variables (SECRET_KEY, DEBUG, CORS settings) are configured directly in `backend/backend/config/settings.py` - no separate `.env` file is needed for the backend.
 
 ## Running the Application
 
@@ -168,16 +163,18 @@ The frontend will run at `http://localhost:3000`
 ikt/
 ├── backend/
 │   ├── backend/
-│   │   ├── settings.py          # Django settings
-│   │   ├── urls.py               # URL routing
-│   │   └── .env                  # Environment variables
-│   ├── booklist/
-│   │   ├── models.py             # Database models
-│   │   ├── serializer.py         # DRF serializers
-│   │   ├── views.py              # API endpoints
-│   │   └── urls.py               # App-level routing
-│   ├── media/                    # Uploaded book covers
-│   ├── manage.py
+│   │   ├── config/
+│   │   │   ├── settings.py      # Django settings
+│   │   │   ├── urls.py          # URL routing
+│   │   │   └── wsgi.py
+│   │   ├── booklist/
+│   │   │   ├── models.py        # Database models
+│   │   │   ├── serializer.py    # DRF serializers
+│   │   │   ├── views.py         # API endpoints
+│   │   │   └── urls.py          # App-level routing
+│   │   ├── media/               # Uploaded book covers
+│   │   ├── manage.py
+│   │   └── db.sqlite3           # SQLite database
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/
@@ -189,7 +186,7 @@ ikt/
 │   │   └── interface/            # TypeScript interfaces
 │   ├── public/                   # Static assets
 │   ├── package.json
-│   └── .env.local
+│   └── .env                      # Environment variables
 ├── myvenv/                       # Python virtual environment
 └── README.md
 ```
@@ -259,20 +256,20 @@ python manage.py createsuperuser
 
 **CORS errors:**
 
-- Verify `CORS_ALLOWED_ORIGINS` in backend `.env`
-- Check frontend URL matches exactly (no trailing slash)
+- CORS is currently set to allow all origins (`CORS_ORIGIN_ALLOW_ALL = True` in `settings.py`)
+- If you need to restrict origins, modify the `settings.py` file to use `CORS_ALLOWED_ORIGINS` instead
 
 **Media files not loading:**
 
-- Ensure `media/images/` directory exists
-- Check `MEDIA_URL` and `MEDIA_ROOT` in settings.py
+- Ensure `backend/backend/booklist/media/` directory exists
+- Check `MEDIA_URL` and `MEDIA_ROOT` in `config/settings.py`
 
 ### Frontend Issues
 
 **API connection failed:**
 
-- Verify `NEXT_PUBLIC_API_URL` in `.env.local`
-- Ensure backend server is running
+- Verify `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_BACKEND_URL` in `.env`
+- Ensure backend server is running on port 8000
 
 **pnpm not found:**
 
