@@ -1,0 +1,2024 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2025-12-23T22:31:05.877Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "test",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2025-12-24T14:13:16.959Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "4",
+        "object_repr": "bookadmin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Last login\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2025-12-24T14:23:59.497Z",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "4",
+        "object_repr": "bookadmin",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2025-12-24T23:13:19.708Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "151",
+        "object_repr": "The Secret History of Twin Peaks",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"CoverUrl\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2025-12-24T23:13:28.006Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "151",
+        "object_repr": "The Secret History of Twin Peaks",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 3,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 3,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 3,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 3,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 2,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 2,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 2,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 2,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add book",
+        "content_type": 7,
+        "codename": "add_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change book",
+        "content_type": 7,
+        "codename": "change_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete book",
+        "content_type": 7,
+        "codename": "delete_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view book",
+        "content_type": 7,
+        "codename": "view_book"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add User Book Mark",
+        "content_type": 8,
+        "codename": "add_userbook"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change User Book Mark",
+        "content_type": 8,
+        "codename": "change_userbook"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete User Book Mark",
+        "content_type": 8,
+        "codename": "delete_userbook"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view User Book Mark",
+        "content_type": 8,
+        "codename": "view_userbook"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$FpmLq88r30IgaMA2meXEBU$UUkM8nr9/gAvQH1bFAr1qxP2RV6SUeIaDO8WV6viB50=",
+        "last_login": "2026-01-11T15:48:21.337Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-12-22T02:32:06.752Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "test",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "testFirstName",
+        "last_name": "testLastName",
+        "email": "user@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-23T22:31:48.266Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$LinssxDqanlNXLZZHpUOnP$uGQKtPEQLz4t5QrL5SfG2slMHYSmDtAIBImyU9MsYM0=",
+        "last_login": "2025-12-24T14:13:15Z",
+        "is_superuser": true,
+        "username": "bookadmin",
+        "first_name": "Book",
+        "last_name": "Admin",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-12-24T14:12:29Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$WZyhpqbw5B33ETXNhzcXJp$JwcXlCpbDeIWohmreM9W2DpAg5IUUg3UwySixDV+kdI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "dobi.peter",
+        "first_name": "Peter",
+        "last_name": "Dobi",
+        "email": "dante0518@gmail.com",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2026-01-03T16:32:40.005Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "booklist",
+        "model": "book"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "booklist",
+        "model": "userbook"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "06a01fkmo1rdgqsbo63c6kl2570yv2yl",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyEQaAGP3v0GwrK7UjWQlPbU-O-2SQ96nHlvZhMxrUuJa6c5TiiuQovLbwcpv6geAJ-pPprMrS7zBPJQ5Em7vDek9-10_w5K6mVfB-O0HgwToyPmDGg8O1YOxuSzQcUMQOhDGq0FZ41VexwCMCGDduLzBReZOZc:1vXVim:IlyPvCHg66pTZkWhB6E-qB0BXDLLumfKhduZQzJ_JIk",
+        "expire_date": "2026-01-05T02:32:28.775Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0c4kc36cyshii4wdoxj1w07lbbmb9t71",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyEQaAGP3v0GwrK7UjWQlPbU-O-2SQ96nHlvZhMxrUuJa6c5TiiuQovLbwcpv6geAJ-pPprMrS7zBPJQ5Em7vDek9-10_w5K6mVfB-O0HgwToyPmDGg8O1YOxuSzQcUMQOhDGq0FZ41VexwCMCGDduLzBReZOZc:1vYAu2:hFQlbG-gGmDN0vUXHSbbJk3EN2O-A0GHY9ot4sbzR7Y",
+        "expire_date": "2026-01-06T22:30:50.918Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "swuy9ugb9ddq0b7pemas3q8mmk060fmj",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyEQaAGP3v0GwrK7UjWQlPbU-O-2SQ96nHlvZhMxrUuJa6c5TiiuQovLbwcpv6geAJ-pPprMrS7zBPJQ5Em7vDek9-10_w5K6mVfB-O0HgwToyPmDGg8O1YOxuSzQcUMQOhDGq0FZ41VexwCMCGDduLzBReZOZc:1vexfx:Pn3IbOVrN3-Nnr_tzPsrQ96m4Lk_jvOUA4PwxaWhMGQ",
+        "expire_date": "2026-01-25T15:48:21.343Z"
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 51,
+    "fields": {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "description": "A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice.",
+        "isbn": "9780061120084",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 52,
+    "fields": {
+        "title": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian social science fiction novel and cautionary tale about the dangers of totalitarianism.",
+        "isbn": "9780451524935",
+        "genre": "Dystopian Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 53,
+    "fields": {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "description": "A romantic novel of manners that follows the character development of Elizabeth Bennet.",
+        "isbn": "9780141439518",
+        "genre": "Romance",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 54,
+    "fields": {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "description": "A novel about the impossibility of recapturing the past and the difficulty of altering one's future.",
+        "isbn": "9780743273565",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 55,
+    "fields": {
+        "title": "Harry Potter and the Philosopher's Stone",
+        "author": "J.K. Rowling",
+        "description": "A young wizard's journey begins at Hogwarts School of Witchcraft and Wizardry.",
+        "isbn": "9780747532699",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 56,
+    "fields": {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "description": "A fantasy novel about the quest of home-loving hobbit Bilbo Baggins.",
+        "isbn": "9780547928227",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 57,
+    "fields": {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "description": "A story about teenage rebellion and alienation narrated by Holden Caulfield.",
+        "isbn": "9780316769174",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780316769174-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 58,
+    "fields": {
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "description": "An epic high-fantasy novel about the quest to destroy the One Ring.",
+        "isbn": "9780544003415",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780544003415-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 59,
+    "fields": {
+        "title": "Animal Farm",
+        "author": "George Orwell",
+        "description": "An allegorical novella reflecting events leading up to the Russian Revolution.",
+        "isbn": "9780451526342",
+        "genre": "Political Satire",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451526342-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 60,
+    "fields": {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "description": "A dystopian novel set in a futuristic World State of genetically modified citizens.",
+        "isbn": "9780060850524",
+        "genre": "Dystopian Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780060850524-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 61,
+    "fields": {
+        "title": "The Chronicles of Narnia",
+        "author": "C.S. Lewis",
+        "description": "A series of seven fantasy novels set in the magical land of Narnia.",
+        "isbn": "9780066238500",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780066238500-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 62,
+    "fields": {
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "description": "A dystopian novel about a future where books are outlawed and burned.",
+        "isbn": "9781451673319",
+        "genre": "Dystopian Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781451673319-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 63,
+    "fields": {
+        "title": "Moby-Dick",
+        "author": "Herman Melville",
+        "description": "The narrative of Captain Ahab's obsessive quest to kill the white whale.",
+        "isbn": "9780142437247",
+        "genre": "Adventure",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780142437247-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 64,
+    "fields": {
+        "title": "Jane Eyre",
+        "author": "Charlotte Brontë",
+        "description": "A novel following the emotions and experiences of its eponymous heroine.",
+        "isbn": "9780141441146",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141441146-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 65,
+    "fields": {
+        "title": "Wuthering Heights",
+        "author": "Emily Brontë",
+        "description": "A tale of passion and revenge set on the Yorkshire moors.",
+        "isbn": "9780141439556",
+        "genre": "Gothic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439556-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 66,
+    "fields": {
+        "title": "The Odyssey",
+        "author": "Homer",
+        "description": "An ancient Greek epic poem about Odysseus's journey home after the Trojan War.",
+        "isbn": "9780140268867",
+        "genre": "Epic Poetry",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140268867-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 67,
+    "fields": {
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoevsky",
+        "description": "A psychological novel about the mental anguish of a poor student who murders.",
+        "isbn": "9780486415871",
+        "genre": "Philosophical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780486415871-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 68,
+    "fields": {
+        "title": "The Picture of Dorian Gray",
+        "author": "Oscar Wilde",
+        "description": "A philosophical novel about a man whose portrait ages while he remains young.",
+        "isbn": "9780141439570",
+        "genre": "Gothic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439570-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 69,
+    "fields": {
+        "title": "Les Misérables",
+        "author": "Victor Hugo",
+        "description": "A French historical novel following the lives of several characters through social injustice.",
+        "isbn": "9780451419439",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451419439-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 70,
+    "fields": {
+        "title": "The Adventures of Huckleberry Finn",
+        "author": "Mark Twain",
+        "description": "A novel about a young boy's adventures along the Mississippi River.",
+        "isbn": "9780486280615",
+        "genre": "Adventure",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780486280615-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 71,
+    "fields": {
+        "title": "Dracula",
+        "author": "Bram Stoker",
+        "description": "A Gothic horror novel about the vampire Count Dracula.",
+        "isbn": "9780141439846",
+        "genre": "Gothic Horror",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141439846-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 72,
+    "fields": {
+        "title": "Frankenstein",
+        "author": "Mary Shelley",
+        "description": "A novel about a scientist who creates a sapient creature in an unorthodox experiment.",
+        "isbn": "9780486282114",
+        "genre": "Gothic Horror",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780486282114-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 73,
+    "fields": {
+        "title": "The Divine Comedy",
+        "author": "Dante Alighieri",
+        "description": "An Italian long narrative poem describing the author's journey through Hell, Purgatory, and Paradise.",
+        "isbn": "9780142437223",
+        "genre": "Epic Poetry",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780142437223-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 74,
+    "fields": {
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "description": "A novel that chronicles the history of the French invasion of Russia.",
+        "isbn": "9780199232765",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780199232765-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 75,
+    "fields": {
+        "title": "Anna Karenina",
+        "author": "Leo Tolstoy",
+        "description": "A novel about an aristocratic woman's tragic affair with a military officer.",
+        "isbn": "9780143035008",
+        "genre": "Romance",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780143035008-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 76,
+    "fields": {
+        "title": "The Brothers Karamazov",
+        "author": "Fyodor Dostoevsky",
+        "description": "A philosophical novel set in 19th-century Russia about faith, doubt, and reason.",
+        "isbn": "9780374528379",
+        "genre": "Philosophical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780374528379-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 77,
+    "fields": {
+        "title": "Don Quixote",
+        "author": "Miguel de Cervantes",
+        "description": "A Spanish novel about a man who loses his sanity and becomes a knight-errant.",
+        "isbn": "9780142437230",
+        "genre": "Adventure",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780142437230-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 78,
+    "fields": {
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez",
+        "description": "A landmark novel telling the multi-generational story of the Buendía family.",
+        "isbn": "9780060883287",
+        "genre": "Magical Realism",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780060883287-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 79,
+    "fields": {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "description": "A novel about a young Andalusian shepherd on a journey to Egypt.",
+        "isbn": "9780062315007",
+        "genre": "Adventure",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062315007-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 80,
+    "fields": {
+        "title": "The Little Prince",
+        "author": "Antoine de Saint-Exupéry",
+        "description": "A poetic tale about a young prince who visits various planets in space.",
+        "isbn": "9780156012195",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780156012195-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 81,
+    "fields": {
+        "title": "Catch-22",
+        "author": "Joseph Heller",
+        "description": "A satirical novel set during World War II about circular logic and bureaucracy.",
+        "isbn": "9781451626650",
+        "genre": "Satire",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781451626650-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 82,
+    "fields": {
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut",
+        "description": "A science fiction-infused anti-war novel about Billy Pilgrim and the bombing of Dresden.",
+        "isbn": "9780385333849",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780385333849-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 83,
+    "fields": {
+        "title": "The Handmaid's Tale",
+        "author": "Margaret Atwood",
+        "description": "A dystopian novel about a totalitarian society where women have no rights.",
+        "isbn": "9780385490818",
+        "genre": "Dystopian Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780385490818-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 84,
+    "fields": {
+        "title": "The Road",
+        "author": "Cormac McCarthy",
+        "description": "A post-apocalyptic novel about a father and son's journey through a devastated America.",
+        "isbn": "9780307387899",
+        "genre": "Post-Apocalyptic",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307387899-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 85,
+    "fields": {
+        "title": "Life of Pi",
+        "author": "Yann Martel",
+        "description": "A fantasy adventure novel about an Indian boy surviving a shipwreck with a Bengal tiger.",
+        "isbn": "9780156027328",
+        "genre": "Adventure",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780156027328-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 86,
+    "fields": {
+        "title": "The Kite Runner",
+        "author": "Khaled Hosseini",
+        "description": "A novel about friendship and redemption set in Afghanistan.",
+        "isbn": "9781594631931",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781594631931-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 87,
+    "fields": {
+        "title": "The Book Thief",
+        "author": "Markus Zusak",
+        "description": "A historical novel narrated by Death about a girl living in Nazi Germany.",
+        "isbn": "9780375842207",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780375842207-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 88,
+    "fields": {
+        "title": "The Hunger Games",
+        "author": "Suzanne Collins",
+        "description": "A dystopian novel about a televised fight to the death among teenagers.",
+        "isbn": "9780439023481",
+        "genre": "Dystopian Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780439023481-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 89,
+    "fields": {
+        "title": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "description": "A mystery thriller following symbologist Robert Langdon.",
+        "isbn": "9780385504201",
+        "genre": "Mystery Thriller",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780385504201-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 90,
+    "fields": {
+        "title": "The Girl with the Dragon Tattoo",
+        "author": "Stieg Larsson",
+        "description": "A psychological thriller about a journalist and a hacker investigating a disappearance.",
+        "isbn": "9780307454546",
+        "genre": "Mystery Thriller",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307454546-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 91,
+    "fields": {
+        "title": "Gone Girl",
+        "author": "Gillian Flynn",
+        "description": "A psychological thriller about a woman who disappears on her fifth wedding anniversary.",
+        "isbn": "9780307588371",
+        "genre": "Mystery Thriller",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307588371-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 92,
+    "fields": {
+        "title": "The Fault in Our Stars",
+        "author": "John Green",
+        "description": "A novel about two teenagers with cancer who fall in love.",
+        "isbn": "9780525478812",
+        "genre": "Young Adult",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780525478812-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 93,
+    "fields": {
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "description": "A science fiction novel about an astronaut stranded on Mars.",
+        "isbn": "9780553418026",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553418026-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 94,
+    "fields": {
+        "title": "Ready Player One",
+        "author": "Ernest Cline",
+        "description": "A science fiction novel set in a dystopian future dominated by virtual reality.",
+        "isbn": "9780307887436",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307887436-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 95,
+    "fields": {
+        "title": "The Shining",
+        "author": "Stephen King",
+        "description": "A horror novel about a family trapped in an isolated hotel during winter.",
+        "isbn": "9780307743657",
+        "genre": "Horror",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307743657-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 96,
+    "fields": {
+        "title": "It",
+        "author": "Stephen King",
+        "description": "A horror novel about a group of children terrorized by a shape-shifting entity.",
+        "isbn": "9781501142970",
+        "genre": "Horror",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781501142970-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 97,
+    "fields": {
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "description": "A science fiction novel set on the desert planet Arrakis.",
+        "isbn": "9780441172719",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780441172719-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 98,
+    "fields": {
+        "title": "Foundation",
+        "author": "Isaac Asimov",
+        "description": "A science fiction novel about the fall and rise of galactic civilizations.",
+        "isbn": "9780553293357",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553293357-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 99,
+    "fields": {
+        "title": "Neuromancer",
+        "author": "William Gibson",
+        "description": "A cyberpunk novel about a washed-up computer hacker hired for one last job.",
+        "isbn": "9780441569595",
+        "genre": "Cyberpunk",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780441569595-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 100,
+    "fields": {
+        "title": "Sapiens: A Brief History of Humankind",
+        "author": "Yuval Noah Harari",
+        "description": "A groundbreaking narrative of humanity's creation and evolution.",
+        "isbn": "9780062316097",
+        "genre": "Non-Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062316097-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 101,
+    "fields": {
+        "title": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "description": "A comic science fiction series about the adventures of Arthur Dent.",
+        "isbn": "9780345391803",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780345391803-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 102,
+    "fields": {
+        "title": "A Game of Thrones",
+        "author": "George R.R. Martin",
+        "description": "The first novel in an epic fantasy series about power struggles in Westeros.",
+        "isbn": "9780553103540",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553103540-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 103,
+    "fields": {
+        "title": "The Name of the Wind",
+        "author": "Patrick Rothfuss",
+        "description": "A fantasy novel about Kvothe, a legendary figure telling his own story.",
+        "isbn": "9780756404079",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780756404079-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 104,
+    "fields": {
+        "title": "The Stand",
+        "author": "Stephen King",
+        "description": "A post-apocalyptic horror novel about a pandemic and the survivors.",
+        "isbn": "9780307743688",
+        "genre": "Horror",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307743688-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 105,
+    "fields": {
+        "title": "Ender's Game",
+        "author": "Orson Scott Card",
+        "description": "A military science fiction novel about a young genius trained to fight aliens.",
+        "isbn": "9780812550702",
+        "genre": "Science Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780812550702-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 106,
+    "fields": {
+        "title": "The Silmarillion",
+        "author": "J.R.R. Tolkien",
+        "description": "A collection of mythopoeic stories about the history of Middle-earth.",
+        "isbn": "9780618391110",
+        "genre": "Fantasy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780618391110-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 107,
+    "fields": {
+        "title": "Educated",
+        "author": "Tara Westover",
+        "description": "A memoir about a woman who grows up in a survivalist family and escapes to learn.",
+        "isbn": "9780399590504",
+        "genre": "Memoir",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780399590504-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 108,
+    "fields": {
+        "title": "Becoming",
+        "author": "Michelle Obama",
+        "description": "A memoir by the former First Lady of the United States.",
+        "isbn": "9781524763138",
+        "genre": "Memoir",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781524763138-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 109,
+    "fields": {
+        "title": "The 7 Habits of Highly Effective People",
+        "author": "Stephen R. Covey",
+        "description": "A self-help book about achieving personal and professional effectiveness.",
+        "isbn": "9781982137274",
+        "genre": "Self-Help",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781982137274-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 110,
+    "fields": {
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "description": "A practical guide to building good habits and breaking bad ones.",
+        "isbn": "9780735211292",
+        "genre": "Self-Help",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 111,
+    "fields": {
+        "title": "The Power of Now",
+        "author": "Eckhart Tolle",
+        "description": "A guide to spiritual enlightenment focused on living in the present moment.",
+        "isbn": "9781577314806",
+        "genre": "Spirituality",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781577314806-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 112,
+    "fields": {
+        "title": "Thinking, Fast and Slow",
+        "author": "Daniel Kahneman",
+        "description": "A book about the two systems that drive the way we think.",
+        "isbn": "9780374533557",
+        "genre": "Psychology",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780374533557-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 113,
+    "fields": {
+        "title": "The Subtle Art of Not Giving a F*ck",
+        "author": "Mark Manson",
+        "description": "A counterintuitive approach to living a good life.",
+        "isbn": "9780062457714",
+        "genre": "Self-Help",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062457714-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 114,
+    "fields": {
+        "title": "Man's Search for Meaning",
+        "author": "Viktor E. Frankl",
+        "description": "A memoir about surviving the Holocaust and finding purpose in life.",
+        "isbn": "9780807014295",
+        "genre": "Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780807014295-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 115,
+    "fields": {
+        "title": "The Lean Startup",
+        "author": "Eric Ries",
+        "description": "A methodology for developing businesses and products.",
+        "isbn": "9780307887894",
+        "genre": "Business",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307887894-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 116,
+    "fields": {
+        "title": "Zero to One",
+        "author": "Peter Thiel",
+        "description": "Notes on startups and how to build the future.",
+        "isbn": "9780804139298",
+        "genre": "Business",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780804139298-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 117,
+    "fields": {
+        "title": "The Immortal Life of Henrietta Lacks",
+        "author": "Rebecca Skloot",
+        "description": "The story of a woman whose cells revolutionized medicine.",
+        "isbn": "9781400052189",
+        "genre": "Non-Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781400052189-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 118,
+    "fields": {
+        "title": "Into the Wild",
+        "author": "Jon Krakauer",
+        "description": "The story of Christopher McCandless's journey into the Alaskan wilderness.",
+        "isbn": "9780385486804",
+        "genre": "Biography",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780385486804-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 119,
+    "fields": {
+        "title": "The Glass Castle",
+        "author": "Jeannette Walls",
+        "description": "A memoir about growing up in a dysfunctional family.",
+        "isbn": "9780743247542",
+        "genre": "Memoir",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780743247542-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 120,
+    "fields": {
+        "title": "Born a Crime",
+        "author": "Trevor Noah",
+        "description": "A memoir about growing up in South Africa during and after apartheid.",
+        "isbn": "9780399588174",
+        "genre": "Memoir",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780399588174-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 121,
+    "fields": {
+        "title": "The Gene: An Intimate History",
+        "author": "Siddhartha Mukherjee",
+        "description": "A history of genetics and its impact on humanity.",
+        "isbn": "9781476733500",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781476733500-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 122,
+    "fields": {
+        "title": "A Brief History of Time",
+        "author": "Stephen Hawking",
+        "description": "A landmark volume in science writing about cosmology.",
+        "isbn": "9780553380163",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553380163-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 123,
+    "fields": {
+        "title": "The Sixth Extinction",
+        "author": "Elizabeth Kolbert",
+        "description": "An examination of the current mass extinction event.",
+        "isbn": "9781250062185",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781250062185-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 124,
+    "fields": {
+        "title": "Guns, Germs, and Steel",
+        "author": "Jared Diamond",
+        "description": "A book about the fates of human societies and environmental factors.",
+        "isbn": "9780393317558",
+        "genre": "Anthropology",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780393317558-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 125,
+    "fields": {
+        "title": "The Emperor of All Maladies",
+        "author": "Siddhartha Mukherjee",
+        "description": "A biography of cancer and the fight against it.",
+        "isbn": "9781439170915",
+        "genre": "Medical History",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781439170915-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 126,
+    "fields": {
+        "title": "Quiet: The Power of Introverts",
+        "author": "Susan Cain",
+        "description": "A book about the power of introverts in a world that can't stop talking.",
+        "isbn": "9780307352156",
+        "genre": "Psychology",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780307352156-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 127,
+    "fields": {
+        "title": "Outliers",
+        "author": "Malcolm Gladwell",
+        "description": "A book about what makes high-achievers different.",
+        "isbn": "9780316017930",
+        "genre": "Psychology",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780316017930-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 128,
+    "fields": {
+        "title": "The Tipping Point",
+        "author": "Malcolm Gladwell",
+        "description": "How little things can make a big difference.",
+        "isbn": "9780316346627",
+        "genre": "Sociology",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780316346627-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 129,
+    "fields": {
+        "title": "Freakonomics",
+        "author": "Steven D. Levitt",
+        "description": "A rogue economist explores the hidden side of everything.",
+        "isbn": "9780060731328",
+        "genre": "Economics",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780060731328-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 130,
+    "fields": {
+        "title": "The Art of War",
+        "author": "Sun Tzu",
+        "description": "An ancient Chinese military treatise on strategy and tactics.",
+        "isbn": "9781599869773",
+        "genre": "Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781599869773-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 131,
+    "fields": {
+        "title": "Meditations",
+        "author": "Marcus Aurelius",
+        "description": "Personal writings by the Roman Emperor on Stoic philosophy.",
+        "isbn": "9780812968255",
+        "genre": "Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780812968255-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 132,
+    "fields": {
+        "title": "The Republic",
+        "author": "Plato",
+        "description": "A Socratic dialogue concerning justice and the order of the city-state.",
+        "isbn": "9780140449143",
+        "genre": "Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140449143-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 133,
+    "fields": {
+        "title": "The Prince",
+        "author": "Niccolò Machiavelli",
+        "description": "A political treatise on leadership and power.",
+        "isbn": "9780140449150",
+        "genre": "Political Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140449150-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 134,
+    "fields": {
+        "title": "The Communist Manifesto",
+        "author": "Karl Marx",
+        "description": "A political pamphlet advocating for class struggle.",
+        "isbn": "9780140447576",
+        "genre": "Political Philosophy",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140447576-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 135,
+    "fields": {
+        "title": "On the Origin of Species",
+        "author": "Charles Darwin",
+        "description": "The foundational work of evolutionary biology.",
+        "isbn": "9780140439120",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140439120-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 136,
+    "fields": {
+        "title": "The Selfish Gene",
+        "author": "Richard Dawkins",
+        "description": "A gene-centered view of evolution.",
+        "isbn": "9780199291151",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780199291151-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 137,
+    "fields": {
+        "title": "Cosmos",
+        "author": "Carl Sagan",
+        "description": "A journey through space and time exploring the universe.",
+        "isbn": "9780345539434",
+        "genre": "Science",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780345539434-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 138,
+    "fields": {
+        "title": "The Diary of a Young Girl",
+        "author": "Anne Frank",
+        "description": "The diary of a Jewish girl hiding during the Holocaust.",
+        "isbn": "9780553296983",
+        "genre": "Biography",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780553296983-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 139,
+    "fields": {
+        "title": "Night",
+        "author": "Elie Wiesel",
+        "description": "A memoir of experiences in Nazi concentration camps.",
+        "isbn": "9780374500016",
+        "genre": "Memoir",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780374500016-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 140,
+    "fields": {
+        "title": "The Color Purple",
+        "author": "Alice Walker",
+        "description": "An epistolary novel about an African-American woman in the South.",
+        "isbn": "9780156028356",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780156028356-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 141,
+    "fields": {
+        "title": "Beloved",
+        "author": "Toni Morrison",
+        "description": "A novel about the legacy of slavery.",
+        "isbn": "9781400033416",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781400033416-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 142,
+    "fields": {
+        "title": "The Grapes of Wrath",
+        "author": "John Steinbeck",
+        "description": "A novel about a family during the Great Depression.",
+        "isbn": "9780143039433",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780143039433-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 143,
+    "fields": {
+        "title": "Of Mice and Men",
+        "author": "John Steinbeck",
+        "description": "A novella about two displaced migrant workers during the Great Depression.",
+        "isbn": "9780142000670",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780142000670-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 144,
+    "fields": {
+        "title": "The Sun Also Rises",
+        "author": "Ernest Hemingway",
+        "description": "A novel about American and British expatriates in Europe.",
+        "isbn": "9780743297332",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780743297332-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 145,
+    "fields": {
+        "title": "For Whom the Bell Tolls",
+        "author": "Ernest Hemingway",
+        "description": "A novel about an American fighting in the Spanish Civil War.",
+        "isbn": "9780684803357",
+        "genre": "Historical Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780684803357-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 146,
+    "fields": {
+        "title": "A Farewell to Arms",
+        "author": "Ernest Hemingway",
+        "description": "A novel about an American ambulance driver during World War I.",
+        "isbn": "9780684801469",
+        "genre": "War Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780684801469-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 147,
+    "fields": {
+        "title": "The Old Man and the Sea",
+        "author": "Ernest Hemingway",
+        "description": "A short novel about an aging fisherman's epic battle with a giant marlin.",
+        "isbn": "9780684801223",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780684801223-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 148,
+    "fields": {
+        "title": "The Sound and the Fury",
+        "author": "William Faulkner",
+        "description": "A novel about the decline of a Southern aristocratic family.",
+        "isbn": "9780679732242",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780679732242-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 149,
+    "fields": {
+        "title": "As I Lay Dying",
+        "author": "William Faulkner",
+        "description": "A novel about a family's journey to bury their matriarch.",
+        "isbn": "9780679732259",
+        "genre": "Classic Fiction",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780679732259-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 150,
+    "fields": {
+        "title": "Twin Peaks: The Final Dossier",
+        "author": "Mark Frost",
+        "description": "A novel expanding the Twin Peaks universe with FBI files and character backgrounds.",
+        "isbn": "9781250163301",
+        "genre": "Mystery",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9781250163301-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 151,
+    "fields": {
+        "title": "The Secret History of Twin Peaks",
+        "author": "Mark Frost",
+        "description": "An epistolary novel revealing the secret history of Twin Peaks.",
+        "isbn": "9781250075567",
+        "genre": "Mystery",
+        "cover": "",
+        "coverUrl": "https://epub.us/wp-content/uploads/2016/10/The-Secret-History-Of-Twin-Peaks-By-Mark-Frost.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 152,
+    "fields": {
+        "title": "The Autobiography of F.B.I. Special Agent Dale Cooper",
+        "author": "Scott Frost",
+        "description": "The life story of Twin Peaks' FBI agent Dale Cooper.",
+        "isbn": "9780671736880",
+        "genre": "Mystery",
+        "cover": "",
+        "coverUrl": "https://covers.openlibrary.org/b/isbn/9780671736880-L.jpg",
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 153,
+    "fields": {
+        "title": "Test Book Title",
+        "author": "Test Book Author",
+        "description": "Test book Description",
+        "isbn": "1234567889",
+        "genre": "Mystery",
+        "cover": "",
+        "coverUrl": null,
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 155,
+    "fields": {
+        "title": "Test Book Title",
+        "author": "Test Book Author",
+        "description": "Test description",
+        "isbn": "1234567889",
+        "genre": "Mystery",
+        "cover": "images/bg.png",
+        "coverUrl": null,
+        "user": 4
+    }
+},
+{
+    "model": "booklist.book",
+    "pk": 156,
+    "fields": {
+        "title": "Metro 2033",
+        "author": "Dimitry Glukovsky",
+        "description": "Metro 2033 (Russian: Метро 2033) is a 2002 post-apocalyptic fiction novel by Russian author Dmitry Glukhovsky. It is set within the Moscow Metro, where the last survivors hide after a global nuclear holocaust. It has been followed by two sequels, Metro 2034 and Metro 2035, and spawned the Metro media franchise. The book's English edition was published as a tie-in with its video game adaptation in 2010.",
+        "isbn": "9785170596782",
+        "genre": "Post-Apocalyptic",
+        "cover": "images/cmjyiz5pt0000homd7l9gjv59.jpg",
+        "coverUrl": null,
+        "user": 5
+    }
+},
+{
+    "model": "booklist.userbook",
+    "pk": 1,
+    "fields": {
+        "user": 4,
+        "book": 93,
+        "bought": true,
+        "read": true,
+        "onBookshelf": true,
+        "created_at": "2026-01-03T14:39:55.914Z",
+        "updated_at": "2026-01-03T14:40:32.519Z"
+    }
+},
+{
+    "model": "booklist.userbook",
+    "pk": 2,
+    "fields": {
+        "user": 5,
+        "book": 156,
+        "bought": true,
+        "read": true,
+        "onBookshelf": false,
+        "created_at": "2026-01-03T16:36:43.487Z",
+        "updated_at": "2026-01-03T16:36:43.968Z"
+    }
+},
+{
+    "model": "booklist.userbook",
+    "pk": 3,
+    "fields": {
+        "user": 4,
+        "book": 140,
+        "bought": true,
+        "read": true,
+        "onBookshelf": true,
+        "created_at": "2026-01-07T15:40:10.951Z",
+        "updated_at": "2026-01-07T15:40:13.633Z"
+    }
+}
+]
