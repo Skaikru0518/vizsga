@@ -35,7 +35,7 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 git clone <repository-url>
-cd ikt
+cd vizsga
 ```
 
 ### 2. Backend Setup (Django)
