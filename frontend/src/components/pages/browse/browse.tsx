@@ -213,7 +213,9 @@ export default function BrowsePage() {
 									key={author}
 									className="cursor-pointer hover:shadow-lg transition-shadow"
 									onClick={() => {
-										// Could navigate to author page or show all their books
+										// Navigate to author page with encoded name
+										const encodedAuthor = author.toLowerCase().replace(/\s+/g, "-");
+										router.push(`/author/${encodedAuthor}`);
 									}}
 								>
 									<CardHeader className="p-4 md:p-6">
