@@ -160,7 +160,7 @@ The frontend will run at `http://localhost:3000`
 ## Project Structure
 
 ```
-ikt/
+vizsga/
 ├── backend/
 │   ├── backend/
 │   │   ├── config/
